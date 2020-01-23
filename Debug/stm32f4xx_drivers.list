@@ -77,9 +77,9 @@ Disassembly of section .text:
  8000200:	080002b0 	.word	0x080002b0
 
 08000204 <main>:
- */
+	#warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize FPU before use."
+#endif
 
-#include "stm32f446xx.h"
 
 int main(void)
 {

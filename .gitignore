@@ -12,3 +12,5 @@ Debug/stm32f4xx_drivers.bin
 Debug/stm32f4xx_drivers.elf
 Debug/stm32f4xx_drivers.list
 Debug/stm32f4xx_drivers.map
+Debug/src/main.o
+Debug/Src/main.su
