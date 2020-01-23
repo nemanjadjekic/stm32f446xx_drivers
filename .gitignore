@@ -1,0 +1,14 @@
+
+Debug/makefile
+Debug/objects.list
+Debug/sources.mk
+Debug/src/main.o
+Debug/src/subdir.mk
+Debug/Src/syscalls.o
+Debug/Src/syscalls.su
+Debug/Src/sysmem.o
+Debug/startup/subdir.mk
+Debug/stm32f4xx_drivers.bin
+Debug/stm32f4xx_drivers.elf
+Debug/stm32f4xx_drivers.list
+Debug/stm32f4xx_drivers.map

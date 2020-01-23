@@ -2,7 +2,7 @@
  * main.c
  *
  *  Created on: Aug 23, 2019
- *      Author: neman
+ *      Author: nemanja
  */
 
 #include "stm32f446xx.h"

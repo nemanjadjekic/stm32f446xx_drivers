@@ -2,7 +2,7 @@
  * stm32f446xx.h
  *
  *  Created on: Aug 23, 2019
- *      Author: neman
+ *      Author: nemanja
  */
 
 #ifndef INC_STM32F446XX_H_

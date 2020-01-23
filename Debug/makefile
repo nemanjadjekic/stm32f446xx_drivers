@@ -31,13 +31,16 @@ default.size.stdout \
 OBJDUMP_LIST += \
 stm32f4xx_drivers.list \
 
+OBJCOPY_BIN += \
+stm32f4xx_drivers.bin \
+
 
 # All Target
 all: stm32f4xx_drivers.elf secondary-outputs
 
 # Tool invocations
 stm32f4xx_drivers.elf: $(OBJS) $(USER_OBJS) D:\MCU\ Workspace\STM32CubeIDE_Workspace\stm32f4xx_drivers\STM32F446RETX_FLASH.ld
-	arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\MCU Workspace\STM32CubeIDE_Workspace\stm32f4xx_drivers\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\MCU Workspace\STM32CubeIDE_Workspace\stm32f4xx_drivers\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -51,12 +54,17 @@ stm32f4xx_drivers.list: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+stm32f4xx_drivers.bin: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "stm32f4xx_drivers.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
 	-$(RM) *
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
 
 .PHONY: all clean dependents
 .SECONDARY:

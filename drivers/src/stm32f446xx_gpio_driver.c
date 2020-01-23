@@ -2,7 +2,7 @@
  * stm32f446xx_gpio_driver.c
  *
  *  Created on: Aug 28, 2019
- *      Author: neman
+ *      Author: nemanja
  */
 
 #include "stm32f446xx_gpio_driver.h"
