@@ -1,4 +1,5 @@
-"Src/main.o"
+"Src/Tests/002_LedToggle_PushPullCfg.o"
 "Src/syscalls.o"
 "Src/sysmem.o"
 "Startup/startup_stm32f446retx.o"
+"drivers/src/stm32f446xx_gpio_driver.o"

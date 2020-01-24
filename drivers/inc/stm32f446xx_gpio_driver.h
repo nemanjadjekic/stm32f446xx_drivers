@@ -82,7 +82,7 @@ typedef struct
  * GPIO pin possible output speeds
  */
 #define GPIO_SPEED_LOW		0
-#define GPIO_SPEED_MEDUIM	1
+#define GPIO_SPEED_MEDIUM	1
 #define GPIO_SPEED_FAST		2
 #define GPIO_SPEED_HIGH		3
 
@@ -91,7 +91,7 @@ typedef struct
  * @GPIO_PIN_PULL_UP_PULL_DOWN
  * GPIO pin pull-up and pull-down configuration macros
  */
-#define GPIO_PIN_NO_PUDP	0	/* GPIO configuration no pull-up, pull-down */
+#define GPIO_PIN_NO_PUPD	0	/* GPIO configuration no pull-up, pull-down */
 #define GPIO_PIN_PU			1	/* GPIO configuration pull-up				*/
 #define GPIO_PIN_PD			2	/* GPIO configuration pull-down				*/
 
@@ -117,7 +117,7 @@ void GPIO_DeInit(GPIO_RegDef_t *pGPIOx);
 uint8_t GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
 uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx);
 void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value);
-void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint8_t Value);
+void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value);
 void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
 
 /*
