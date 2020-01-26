@@ -1,4 +1,4 @@
-"Src/Tests/002_LedToggle_PushPullCfg.o"
+"Src/Tests/005_Button_Interrupt.o"
 "Src/syscalls.o"
 "Src/sysmem.o"
 "Startup/startup_stm32f446retx.o"
