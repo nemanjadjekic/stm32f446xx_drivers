@@ -1,5 +1,6 @@
-"Src/Tests/005_Button_Interrupt.o"
+"Src/Tests/006_SPI_SendData.o"
 "Src/syscalls.o"
 "Src/sysmem.o"
 "Startup/startup_stm32f446retx.o"
 "drivers/src/stm32f446xx_gpio_driver.o"
+"drivers/src/stm32f446xx_spi_driver.o"

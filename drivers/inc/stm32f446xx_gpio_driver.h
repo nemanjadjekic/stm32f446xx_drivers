@@ -95,6 +95,7 @@ typedef struct
 #define GPIO_PIN_PU			1	/* GPIO configuration pull-up				*/
 #define GPIO_PIN_PD			2	/* GPIO configuration pull-down				*/
 
+
 /******************************************************************************************************************
  * 										APIs supported by this driver											  *
  * 					For more information about the APIs check the function definitions							  *
@@ -127,5 +128,9 @@ void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi);
 void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
 void GPIO_IRQHandling(uint8_t PinNumber);
 
+
+/*
+ * Other peripheral APIs
+ */
 
 #endif /* INC_STM32F446XX_GPIO_DRIVER_H_ */

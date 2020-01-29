@@ -75,35 +75,40 @@
 /*
  * Base addresses of peripherals which are hanging on AHB1 bus
  */
-#define GPIOA_BASEADDR						(AHB1PERIPH_BASEADDR + 0x0000) /* GPIOA base address */
-#define GPIOB_BASEADDR						(AHB1PERIPH_BASEADDR + 0x0400) /* GPIOB base address */
-#define GPIOC_BASEADDR						(AHB1PERIPH_BASEADDR + 0x0800) /* GPIOC base address */
-#define GPIOD_BASEADDR						(AHB1PERIPH_BASEADDR + 0x0C00) /* GPIOD base address */
-#define GPIOE_BASEADDR						(AHB1PERIPH_BASEADDR + 0x1000) /* GPIOE base address */
-#define GPIOF_BASEADDR						(AHB1PERIPH_BASEADDR + 0x1400) /* GPIOF base address */
-#define GPIOG_BASEADDR						(AHB1PERIPH_BASEADDR + 0x1800) /* GPIOG base address */
-#define GPIOH_BASEADDR						(AHB1PERIPH_BASEADDR + 0x1C00) /* GPIOH base address */
-#define RCC_BASEADDR						(AHB1PERIPH_BASEADDR + 0x3800) /* RCC base address	 */
+#define GPIOA_BASEADDR						(AHB1PERIPH_BASEADDR + 0x0000) /* GPIOA base address 					*/
+#define GPIOB_BASEADDR						(AHB1PERIPH_BASEADDR + 0x0400) /* GPIOB base address 					*/
+#define GPIOC_BASEADDR						(AHB1PERIPH_BASEADDR + 0x0800) /* GPIOC base address 					*/
+#define GPIOD_BASEADDR						(AHB1PERIPH_BASEADDR + 0x0C00) /* GPIOD base address 					*/
+#define GPIOE_BASEADDR						(AHB1PERIPH_BASEADDR + 0x1000) /* GPIOE base address 					*/
+#define GPIOF_BASEADDR						(AHB1PERIPH_BASEADDR + 0x1400) /* GPIOF base address 					*/
+#define GPIOG_BASEADDR						(AHB1PERIPH_BASEADDR + 0x1800) /* GPIOG base address 					*/
+#define GPIOH_BASEADDR						(AHB1PERIPH_BASEADDR + 0x1C00) /* GPIOH base address 					*/
+#define RCC_BASEADDR						(AHB1PERIPH_BASEADDR + 0x3800) /* RCC base address	 					*/
+#define CRC_BASEADDR						(AHB1PERIPH_BASEADDR + 0x3000) /* CRC base address	 					*/
+#define FIR_BASEADDR						(AHB1PERIPH_BASEADDR + 0x3C00) /* Flash interface register base address	*/
+#define DMA1_BASEADDR						(AHB1PERIPH_BASEADDR + 0x6000) /* DMA1 base address	 					*/
+#define DMA2_BASEADDR						(AHB1PERIPH_BASEADDR + 0x6400) /* DMA2 base address	 					*/
 
 
 /*
  * Base addresses of peripherals which are hanging on APB1 bus
  */
-#define I2C1_BASEADDR						(APB1PERIPH_BASE + 0x5400) /* I2C1 base address   */
-#define I2C2_BASEADDR						(APB1PERIPH_BASE + 0x5800) /* I2C2 base address   */
-#define I2C3_BASEADDR						(APB1PERIPH_BASE + 0x5C00) /* I2C3 base address   */
-#define SPI2_BASEADDR						(APB1PERIPH_BASE + 0x3800) /* SPI2 base address   */
-#define SPI3_BASEADDR						(APB1PERIPH_BASE + 0x3C00) /* SPI3 base address   */
-#define USART2_BASEADDR						(APB1PERIPH_BASE + 0x4400) /* USART2 base address */
-#define USART3_BASEADDR						(APB1PERIPH_BASE + 0x4800) /* USART3 base address */
-#define UART4_BASEADDR						(APB1PERIPH_BASE + 0x4C00) /* UART4 base address  */
-#define UART5_BASEADDR						(APB1PERIPH_BASE + 0x5000) /* UART5 base address  */
+#define I2C1_BASEADDR						(APB1PERIPH_BASEADDR + 0x5400) /* I2C1 base address   */
+#define I2C2_BASEADDR						(APB1PERIPH_BASEADDR + 0x5800) /* I2C2 base address   */
+#define I2C3_BASEADDR						(APB1PERIPH_BASEADDR + 0x5C00) /* I2C3 base address   */
+#define SPI2_BASEADDR						(APB1PERIPH_BASEADDR + 0x3800) /* SPI2 base address   */
+#define SPI3_BASEADDR						(APB1PERIPH_BASEADDR + 0x3C00) /* SPI3 base address   */
+#define USART2_BASEADDR						(APB1PERIPH_BASEADDR + 0x4400) /* USART2 base address */
+#define USART3_BASEADDR						(APB1PERIPH_BASEADDR + 0x4800) /* USART3 base address */
+#define UART4_BASEADDR						(APB1PERIPH_BASEADDR + 0x4C00) /* UART4 base address  */
+#define UART5_BASEADDR						(APB1PERIPH_BASEADDR + 0x5000) /* UART5 base address  */
 
 
 /*
- * Base addresses of peripherals which are hanging on APB1 bus
+ * Base addresses of peripherals which are hanging on APB2 bus
  */
 #define SPI1_BASEADDR						(APB2PERIPH_BASEADDR + 0x3000) /* SPI1 base address   */
+#define SPI4_BASEADDR						(APB2PERIPH_BASEADDR + 0x3400) /* SPI4 base address   */
 #define USART1_BASEADDR						(APB2PERIPH_BASEADDR + 0x1000) /* USART1 base address */
 #define USART6_BASEADDR						(APB2PERIPH_BASEADDR + 0x1400) /* USART6 base address */
 #define SYSCFG_BASEADDR						(APB2PERIPH_BASEADDR + 0x3800) /* SYSCFG base address */
@@ -203,6 +208,23 @@ typedef struct
 
 
 /*
+ * Peripheral register definition structure for SYSCFG
+ */
+typedef struct
+{
+	__vo uint32_t CR1;  					/* SPI control register 1, 	    					Address offset: 0x00 	*/
+	__vo uint32_t CR2;  					/* SPI control register 2, 	    					Address offset: 0x04 	*/
+	__vo uint32_t SR;  						/* SPI status register, 	    					Address offset: 0x08 	*/
+	__vo uint32_t DR;  						/* SPI data register, 	    						Address offset: 0x0C 	*/
+	__vo uint32_t CRCPR;  					/* SPI CRC polynomial register, 	    			Address offset: 0x10 	*/
+	__vo uint32_t RXCRCR;  					/* SPI RX CRC register, 	    					Address offset: 0x14 	*/
+	__vo uint32_t TXCRCR;  					/* SPI TX CRC register, 	    					Address offset: 0x18 	*/
+	__vo uint32_t I2SCFGR;  				/* SPI_I2S configuration register, 	    			Address offset: 0x1C 	*/
+	__vo uint32_t I2SPR;  					/* SPI_I2S prescaler register, 	    				Address offset: 0x20 	*/
+}SPI_RegDef_t;
+
+
+/*
  * Peripheral definitions (Peripheral base addresses typecasted to xxx_RegDef_t)
  */
 #define GPIOA 								((GPIO_RegDef_t*) GPIOA_BASEADDR)
@@ -217,6 +239,12 @@ typedef struct
 #define RCC									((RCC_RegDef_t*) RCC_BASEADDR)
 #define EXTI								((EXTI_RegDef_t*) EXTI_BASEADDR)
 #define SYSCFG								((SYSCFG_RegDef_t*) SYSCFG_BASEADDR)
+
+#define SPI1								((SPI_RegDef_t*) SPI1_BASEADDR)
+#define SPI2								((SPI_RegDef_t*) SPI2_BASEADDR)
+#define SPI3								((SPI_RegDef_t*) SPI3_BASEADDR)
+#define SPI4								((SPI_RegDef_t*) SPI4_BASEADDR)
+
 
 
 /*
@@ -246,6 +274,7 @@ typedef struct
 #define SPI1_PCLK_EN()						( RCC->APB2ENR |= (1 << 12) ) /* SPI1 peripheral clock enabled */
 #define SPI2_PCLK_EN()						( RCC->APB1ENR |= (1 << 14) ) /* SPI2 peripheral clock enabled */
 #define SPI3_PCLK_EN()						( RCC->APB1ENR |= (1 << 15) ) /* SPI3 peripheral clock enabled */
+#define SPI4_PCLK_EN()						( RCC->APB2ENR |= (1 << 13) ) /* SPI4 peripheral clock enabled */
 
 
 /*
@@ -291,6 +320,7 @@ typedef struct
 #define SPI1_PCLK_DI()						( RCC->APB2ENR &= ~(1 << 12) ) /* SPI1 peripheral clock disabled */
 #define SPI2_PCLK_DI()						( RCC->APB1ENR &= ~(1 << 14) ) /* SPI2 peripheral clock disabled */
 #define SPI3_PCLK_DI()						( RCC->APB1ENR &= ~(1 << 15) ) /* SPI3 peripheral clock disabled */
+#define SPI4_PCLK_DI()						( RCC->APB2ENR &= ~(1 << 13) ) /* SPI4 peripheral clock disabled */
 
 
 /*
@@ -321,6 +351,15 @@ typedef struct
 #define GPIOF_REG_RESET()					do{ (RCC->AHB1RSTR |= (1 << 5)); (RCC->AHB1RSTR &= ~(1 << 5)); }while(0)
 #define GPIOG_REG_RESET()					do{ (RCC->AHB1RSTR |= (1 << 6)); (RCC->AHB1RSTR &= ~(1 << 6)); }while(0)
 #define GPIOH_REG_RESET()					do{ (RCC->AHB1RSTR |= (1 << 7)); (RCC->AHB1RSTR &= ~(1 << 7)); }while(0)
+
+
+/*
+ * Macros to reset SPIx peripherals
+ */
+#define SPI1_REG_RESET()					do{ (RCC->APB2RSTR |= (1 << 12)); (RCC->APB2RSTR &= ~(1 << 12)); }while(0)
+#define SPI2_REG_RESET()					do{ (RCC->APB1RSTR |= (1 << 14)); (RCC->APB1RSTR &= ~(1 << 14)); }while(0)
+#define SPI3_REG_RESET()					do{ (RCC->APB1RSTR |= (1 << 15)); (RCC->APB1RSTR &= ~(1 << 15)); }while(0)
+#define SPI4_REG_RESET()					do{ (RCC->APB2RSTR |= (1 << 13)); (RCC->APB2RSTR &= ~(1 << 13)); }while(0)
 
 
 /*
@@ -458,9 +497,61 @@ typedef struct
 #define RESET 				DISABLE
 #define GPIO_PIN_SET		SET
 #define GPIO_PIN_RESET		RESET
+#define FLAG_SET			SET
+#define FLAG_RESET			RESET
+
+
+//TODO: Write bit macros
+/******************************************************************************************
+ *Bit position definitions of SPI peripheral
+ ******************************************************************************************/
+/*
+ * Bit position definitions SPI_CR1
+ */
+#define SPI_CR1_CPHA 				0
+#define SPI_CR1_CPOL				1
+#define SPI_CR1_MSTR 				2
+#define SPI_CR1_BR 					3
+#define SPI_CR1_SPE					6
+#define SPI_CR1_LSB_FIRST 			7
+#define SPI_CR1_SSI					8
+#define SPI_CR1_SSM					9
+#define SPI_CR1_RX_ONLY				10
+#define SPI_CR1_DFF					11
+#define SPI_CR1_CRC_NEXT			12
+#define SPI_CR1_CRC_EN				13
+#define SPI_CR1_BIDI_OE				14
+#define SPI_CR1_BIDI_MODE			15
+
+
+/*
+ * Bit position definitions SPI_CR2
+ */
+#define SPI_CR2_RXDMAEN 			0
+#define SPI_CR2_TXDMAEN 			1
+#define SPI_CR2_SSOE 				2
+#define SPI_CR2_FRF		 			4
+#define SPI_CR2_ERRIE	 			5
+#define SPI_CR2_TXEIE				7
+
+
+/*
+ * Bit position definitions SPI_SR
+ */
+#define SPI_SR_RXNE 				0
+#define SPI_SR_TXE 					1
+#define SPI_SR_CHSIDE				2
+#define SPI_SR_UDR					3
+#define SPI_SR_CRC_ERR				4
+#define SPI_SR_MODF					5
+#define SPI_SR_OVR	 				6
+#define SPI_SR_BSY	 				7
+#define SPI_SR_FRE	 				8
+
 
 
 #include "stm32f446xx_gpio_driver.h"
+#include "stm32f446xx_spi_driver.h"
 
 
 #endif /* INC_STM32F446XX_H_ */
