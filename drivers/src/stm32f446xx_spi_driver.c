@@ -333,3 +333,29 @@ void SPI_SSIConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
 		pSPIx->CR1 &= ~(1 << SPI_CR1_SSI);
 	}
 }
+
+
+/*****************************************************************
+ * @fn				- SPI_SSOEConfig
+ *
+ * @brief			- This function sets SSEO register
+ *
+ * @param[in]		- Base address of the SPI peripheral
+ * @param[in]		- Enable or Disable command
+ *
+ * @return			- None
+ *
+ * @Note			- None
+ *
+ *****************************************************************/
+void SPI_SSOEConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
+{
+	if(EnorDi == ENABLE)
+	{
+		pSPIx->CR2 |= (1 << SPI_CR2_SSOE);
+	}
+	else
+	{
+		pSPIx->CR2 &= ~(1 << SPI_CR2_SSOE);
+	}
+}

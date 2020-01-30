@@ -1,4 +1,4 @@
-"Src/Tests/006_SPI_SendData.o"
+"Src/Tests/007_SPI_Tx_Arduino.o"
 "Src/syscalls.o"
 "Src/sysmem.o"
 "Startup/startup_stm32f446retx.o"

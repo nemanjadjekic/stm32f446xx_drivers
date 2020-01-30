@@ -2,7 +2,7 @@
  * 006_SPI_SendData.c
  *
  *  Created on: Jan 29, 2020
- *      Author: neman
+ *      Author: nemanja
  */
 
 #include <string.h>
@@ -84,9 +84,13 @@ int main(void)
 	/* Send SPI data */
 	SPI_SendData(SPI2, (uint8_t *)user_data, strlen(user_data));
 
-	/* Enable SPI2 peripheral */
+	/* Confirm SPI2 not busy */
+	SPI_GetFlagStatus(SPI2, SPI_SR_BSY);
+
+	/* Disable SPI2 peripheral */
 	SPI_PeripheralControl(SPI2, DISABLE);
 
 	while(1);
+
 	return 0;
 }

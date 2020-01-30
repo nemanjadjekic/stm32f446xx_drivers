@@ -1,0 +1,5 @@
+007_SPI_Tx_Arduino.c:21:6:SPI2_GPIOInits	24	static
+007_SPI_Tx_Arduino.c:51:6:SPI2_Inits	24	static
+007_SPI_Tx_Arduino.c:68:6:GPIO_ButtonInit	24	static
+007_SPI_Tx_Arduino.c:83:6:delay	16	static
+007_SPI_Tx_Arduino.c:88:5:main	40	static

@@ -1,3 +1,0 @@
-006_SPI_SendData.c:21:6:SPI2_GPIOInits	24	static
-006_SPI_SendData.c:51:6:SPI2_Inits	24	static
-006_SPI_SendData.c:68:5:main	32	static
