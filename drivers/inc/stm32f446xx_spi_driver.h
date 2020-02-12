@@ -30,16 +30,39 @@ typedef struct
  */
 typedef struct
 {
-	SPI_RegDef_t *pSPIx;	/* This holds the base address of SPIx(x:0,1,2) peripheral */
+	SPI_RegDef_t *pSPIx;	 /* This holds the base address of SPIx(x:0,1,2) peripheral */
 	SPI_Config_t SPIConfig;
+	uint8_t 	 *pTxBuffer; /* Store application Tx buffer address 					*/
+	uint8_t 	 *pRxBuffer; /* Store application Rx buffer address 					*/
+	uint32_t 	 TxLen;		 /* Store Tx length						 					*/
+	uint32_t	 RxLen; 	 /* Store Rx length						 					*/
+	uint32_t 	 TxState;	 /* Store Tx state						 					*/
+	uint32_t	 RxState; 	 /* Store Rx state						 					*/
 }SPI_Handle_t;
+
+
+/*
+ * Possible SPI Application states
+ */
+#define SPI_READY				0
+#define SPI_BUSY_IN_RX			1
+#define SPI_BUSY_IN_TX			2
+
+
+/*
+ * Possible SPI Application events
+ */
+#define SPI_EVENT_TX_CMPLT			1
+#define SPI_EVENT_RX_CMPLT			2
+#define SPI_EVENT_OVR_ERR			3
+#define SPI_EVENT_CRC_ERR			4
 
 
 /*
  * @SPI_DeviceMode
  */
-#define SPI_DEVICE_MODE_MASTER		1
-#define SPI_DEVICE_MODE_SLAVE		0
+#define SPI_DEVICE_MODE_MASTER				1
+#define SPI_DEVICE_MODE_SLAVE				0
 
 
 /*
@@ -86,8 +109,8 @@ typedef struct
 /*
  * @SPI_SSM
  */
-#define SPI_SSM_EN		1	/* Software slave management enabled */
-#define SPI_SSM_DI		0	/* Software slave management disabled */
+#define SPI_SSM_EN			1	/* Software slave management enabled */
+#define SPI_SSM_DI			0	/* Software slave management disabled */
 
 
 /*
@@ -121,6 +144,14 @@ void SPI_DeInit(SPI_RegDef_t *pSPIx);
 void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Length);
 void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Length);
 
+
+/*
+ * Data send and receive in Interrupt mode
+ */
+uint8_t SPI_SendDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, uint32_t Length);
+uint8_t SPI_ReceiveDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffer, uint32_t Length);
+
+
 /*
  * IRQ Configuration and ISR handling
  */
@@ -136,6 +167,15 @@ uint8_t SPI_GetFlagStatus(SPI_RegDef_t *pSPIx, uint32_t FlagName);
 void SPI_PeripheralControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi);
 void SPI_SSIConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi);
 void SPI_SSOEConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi);
+void SPI_ClearOVRFlag(SPI_RegDef_t *pSPIx);
+void SPI_CloseTransmission(SPI_Handle_t *pSPIHandle);
+void SPI_CloseReception(SPI_Handle_t *pSPIHandle);
+
+
+/*
+ * Application callback
+ */
+void SPI_ApplicationEventCallback(SPI_Handle_t *pSPIHandle, uint8_t AppEvent);
 
 
 #include  "stm32f446xx.h"

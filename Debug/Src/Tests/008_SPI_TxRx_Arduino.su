@@ -1,5 +1,5 @@
 008_SPI_TxRx_Arduino.c:42:6:SPI2_GPIOInits	24	static
-008_SPI_TxRx_Arduino.c:72:6:SPI2_Inits	24	static
+008_SPI_TxRx_Arduino.c:72:6:SPI2_Inits	48	static
 008_SPI_TxRx_Arduino.c:89:6:GPIO_ButtonInit	24	static
 008_SPI_TxRx_Arduino.c:104:6:delay	16	static
 008_SPI_TxRx_Arduino.c:110:9:SPI_VerifyResponse	16	static

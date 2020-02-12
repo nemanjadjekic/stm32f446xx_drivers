@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 0000002a  00000000  00000000  00020064  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00003144  00000000  00000000  0002008e  2**0
+ 12 .debug_info   00003415  00000000  00000000  0002008e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 000008fb  00000000  00000000  000231d2  2**0
+ 13 .debug_abbrev 00000958  00000000  00000000  000234a3  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00000210  00000000  00000000  00023ad0  2**3
+ 14 .debug_aranges 00000260  00000000  00000000  00023e00  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 000001b8  00000000  00000000  00023ce0  2**3
+ 15 .debug_ranges 00000208  00000000  00000000  00024060  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  00003432  00000000  00000000  00023e98  2**0
+ 16 .debug_macro  000034a9  00000000  00000000  00024268  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   00001ef0  00000000  00000000  000272ca  2**0
+ 17 .debug_line   00002005  00000000  00000000  00027711  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    0000be13  00000000  00000000  000291ba  2**0
+ 18 .debug_str    0000bfdc  00000000  00000000  00029716  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  00034fcd  2**0
+ 19 .comment      0000007b  00000000  00000000  000356f2  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000e98  00000000  00000000  00035048  2**2
+ 20 .debug_frame  00001018  00000000  00000000  00035770  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -138,7 +138,7 @@ Disassembly of section .text:
 
 080002b0 <SPI2_GPIOInits>:
 /* Arduino LED */
-#define LED_PIN					13 //9
+#define LED_PIN					13
 
 
 void SPI2_GPIOInits(void)
@@ -217,7 +217,7 @@ void SPI2_GPIOInits(void)
 void SPI2_Inits(void)
 {
  800030c:	b580      	push	{r7, lr}
- 800030e:	b084      	sub	sp, #16
+ 800030e:	b08a      	sub	sp, #40	; 0x28
  8000310:	af00      	add	r7, sp, #0
 	SPI_Handle_t SPIHandle;
 
@@ -252,7 +252,7 @@ void SPI2_Inits(void)
  8000336:	f000 fcd3 	bl	8000ce0 <SPI_Init>
 }
  800033a:	bf00      	nop
- 800033c:	3710      	adds	r7, #16
+ 800033c:	3728      	adds	r7, #40	; 0x28
  800033e:	46bd      	mov	sp, r7
  8000340:	bd80      	pop	{r7, pc}
  8000342:	bf00      	nop
@@ -587,6 +587,7 @@ int main(void)
  8000508:	4803      	ldr	r0, [pc, #12]	; (8000518 <main+0x158>)
  800050a:	f000 fcc0 	bl	8000e8e <SPI_PeripheralControl>
 
+		//TODO: Implement rest of commands to test if needed
 		printf("\nSPI communication closed!");
  800050e:	4808      	ldr	r0, [pc, #32]	; (8000530 <main+0x170>)
  8000510:	f000 fd26 	bl	8000f60 <iprintf>
