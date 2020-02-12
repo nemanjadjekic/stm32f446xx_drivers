@@ -193,7 +193,7 @@ uint8_t SPI_GetFlagStatus(SPI_RegDef_t *pSPIx, uint32_t FlagName)
 /*****************************************************************
  * @fn				- SPI_SendData
  *
- * @brief			- This function de-initialize SPI peripherals
+ * @brief			- This function sends data over SPI peripheral
  *
  * @param[in]		- Base address of the SPI peripheral
  * @param[in]		- Transmit buffer
@@ -208,14 +208,14 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Length)
 {
 	while(Length > 0)
 	{
-		/* Waint until TXE is set */
-		while(SPI_GetFlagStatus(pSPIx->SR, SPI_SR_TXE) == FLAG_RESET);
+		/* Wait until TXE is set */
+		while(SPI_GetFlagStatus(pSPIx->SR, SPI_TXE_FLAG) == FLAG_RESET);
 
 		if( pSPIx->CR1 & (1 << SPI_CR1_DFF) )
 		{
 			/* Load data into data register */
 			/* 16 bit */
-			pSPIx->DR = *((uint16_t*)pTxBuffer);;
+			pSPIx->DR = *((uint16_t*)pTxBuffer);
 			Length--;
 			Length--;
 			(uint16_t*)pTxBuffer++;
@@ -223,7 +223,7 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Length)
 		else
 		{
 			/* 8 bit */
-			pSPIx->DR = *((uint16_t*)pTxBuffer);;
+			pSPIx->DR = *pTxBuffer;
 			Length--;
 			pTxBuffer++;
 		}
@@ -231,7 +231,46 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Length)
 }
 
 
-void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Length);
+/*****************************************************************
+ * @fn				- SPI_ReceivedData
+ *
+ * @brief			- This function receives data over SPI
+ * 					  peripheral
+ *
+ * @param[in]		- Base address of the SPI peripheral
+ * @param[in]		- Transmit buffer
+ * @param[in]		- Length of transmit buffer
+ *
+ * @return			- None
+ *
+ * @Note			- None
+ *
+ *****************************************************************/
+void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Length)
+{
+	while(Length > 0)
+	{
+		/* Wait until RXNE is set */
+		while(SPI_GetFlagStatus(pSPIx->SR, SPI_RXNE_FLAG) == FLAG_RESET);
+
+		if( pSPIx->CR1 & (1 << SPI_CR1_DFF) )
+		{
+			/* Load data from DR to RxBuffer */
+			/* 16 bit */
+			*((uint16_t*)pRxBuffer) = pSPIx->DR;
+			Length--;
+			Length--;
+			(uint16_t*)pRxBuffer++;
+		}
+		else
+		{
+			/* 8 bit */
+			*((uint16_t*)pRxBuffer) = pSPIx->DR;
+			Length--;
+			pRxBuffer++;
+		}
+	}
+}
 
 /*
  * IRQ Configuration and ISR handling
