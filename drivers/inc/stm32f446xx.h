@@ -553,8 +553,8 @@ typedef struct
 
 
 
-#include "stm32f446xx_gpio_driver.h"
-#include "stm32f446xx_spi_driver.h"
+#include <stm32f446xx_gpio_driver.h>
+#include <stm32f446xx_spi_driver.h>
 
 
 #endif /* INC_STM32F446XX_H_ */

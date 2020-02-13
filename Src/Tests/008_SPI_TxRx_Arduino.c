@@ -5,8 +5,8 @@
  *      Author: nemanja
  */
 
+#include <stm32f446xx.h>
 #include <string.h>
-#include "stm32f446xx.h"
 
 /*
  * Alternate functionality

@@ -5,7 +5,7 @@
  *      Author: nemanja
  */
 
-#include "stm32f446xx_gpio_driver.h"
+#include <stm32f446xx_gpio_driver.h>
 
 /*
  * Peripheral Clock setup

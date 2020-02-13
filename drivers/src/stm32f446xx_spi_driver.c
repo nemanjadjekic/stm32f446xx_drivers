@@ -4,8 +4,7 @@
  *  Created on: Jan 26, 2020
  *      Author: nemanja
  */
-
-#include "stm32f446xx_spi_driver.h"
+#include <stm32f446xx_spi_driver.h>
 
 
 /*
