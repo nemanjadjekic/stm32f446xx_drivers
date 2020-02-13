@@ -17,8 +17,8 @@ OBJCOPY_BIN :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Drivers/src \
 Src/Tests \
 Src \
 Startup \
-drivers/src \
 
