@@ -625,6 +625,11 @@ void SPI_ClearOVRFlag(SPI_RegDef_t *pSPIx)
 
 
 /*****************************************************************
+ *               Helper functions implementation                 *
+ *****************************************************************/
+
+
+/*****************************************************************
  * @fn				- SPI_ApplicationEventCallback
  *
  * @brief			- Application event callback function
@@ -642,10 +647,6 @@ __weak void SPI_ApplicationEventCallback(SPI_Handle_t *pSPIHandle, uint8_t AppEv
 	/* This is a week implementation. The application may override this function. */
 }
 
-
-/*****************************************************************
- *               Helper functions implementation                 *
- *****************************************************************/
 
 /*****************************************************************
  * @fn				- spi_txe_interrupt_handle

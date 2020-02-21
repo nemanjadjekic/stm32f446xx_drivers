@@ -1,7 +1,7 @@
 "Drivers/src/stm32f446xx_gpio_driver.o"
 "Drivers/src/stm32f446xx_i2c_driver.o"
 "Drivers/src/stm32f446xx_spi_driver.o"
-"Src/Tests/008_SPI_TxRx_Arduino.o"
+"Src/Tests/009_SPI_TxRx_Arduino_IRQ.o"
 "Src/syscalls.o"
 "Src/sysmem.o"
 "Startup/startup_stm32f446retx.o"

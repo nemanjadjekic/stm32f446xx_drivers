@@ -437,19 +437,19 @@ typedef struct
 #define	IRQ_NO_TIM1_BRK_TIM9		24	/* TIM1 Break interrupt and TIM9 global interrupt						*/
 #define	IRQ_NO_TIM1_UP_TIM10	  	25 	/* TIM1 Update interrupt and TIM10 global interrupt						*/
 #define IRQ_NO_TIM1_TRG_COM_TIM11 	26 	/* TIM1 Trigger and Commutation interrupts and TIM11 global interrupt 	*/
-#define IQR_NO_TIM1_CC				27  /* TIM1 Capture Compare interrupt										*/
-#define IQR_NO_TIM2					28  /* TIM2 global interrupt												*/
-#define IQR_NO_TIM3					29  /* TIM3 global interrupt												*/
-#define IQR_NO_TIM4					30  /* TIM4 global interrupt												*/
-#define IQR_NO_I2C1_EV				31  /* I2C1 event interrupt													*/
-#define IQR_NO_I2C1_ER				32  /* I2C1 error interrupt													*/
-#define IQR_NO_I2C2_EV				33  /* I2C2 event interrupt													*/
-#define IQR_NO_I2C2_ER				34  /* I2C2 error interrupt													*/
-#define IQR_NO_SPI1					35  /* SPI1 global interrupt												*/
-#define IQR_NO_SPI2					36  /* SPI2 global interrupt												*/
-#define IQR_NO_USART1				37  /* USART1 global interrupt												*/
-#define IQR_NO_USART2				38  /* USART2 global interrupt												*/
-#define IQR_NO_USART3				39  /* USART3 global interrupt												*/
+#define IRQ_NO_TIM1_CC				27  /* TIM1 Capture Compare interrupt										*/
+#define IRQ_NO_TIM2					28  /* TIM2 global interrupt												*/
+#define IRQ_NO_TIM3					29  /* TIM3 global interrupt												*/
+#define IRQ_NO_TIM4					30  /* TIM4 global interrupt												*/
+#define IRQ_NO_I2C1_EV				31  /* I2C1 event interrupt													*/
+#define IRQ_NO_I2C1_ER				32  /* I2C1 error interrupt													*/
+#define IRQ_NO_I2C2_EV				33  /* I2C2 event interrupt													*/
+#define IRQ_NO_I2C2_ER				34  /* I2C2 error interrupt													*/
+#define IRQ_NO_SPI1					35  /* SPI1 global interrupt												*/
+#define IRQ_NO_SPI2					36  /* SPI2 global interrupt												*/
+#define IRQ_NO_USART1				37  /* USART1 global interrupt												*/
+#define IRQ_NO_USART2				38  /* USART2 global interrupt												*/
+#define IRQ_NO_USART3				39  /* USART3 global interrupt												*/
 #define IRQ_NO_EXIT15_10			40  /* EXTI Line[15:10] interrupts											*/
 #define IRQ_NO_RTC_ALARM			41  /* RTC Alarms (A and B) through EXTI line interrupts					*/
 #define IRQ_NO_OTG_FS_WKUP			42  /* USB On-The-Go FS Wakeup through EXTI line interrupt					*/
