@@ -54,6 +54,22 @@ typedef struct
 #define I2C_FM_DUTY_16_9			1
 
 
+/*
+ * I2C related status flag definitions
+ */
+#define I2C_FLAG_TXE 		( 1 << I2C_SR1_TXE )
+#define I2C_FLAG_RXNE 		( 1 << I2C_SR1_RXNE )
+#define I2C_FLAG_SB			( 1 << I2C_SR1_SB )
+#define I2C_FLAG_ADDR		( 1 << I2C_SR1_ADDR )
+#define I2C_FLAG_BTF		( 1 << I2C_SR1_BTF )
+#define I2C_FLAG_STOPF		( 1 << I2C_SR1_STOPF )
+#define I2C_FLAG_BERR		( 1 << I2C_SR1_BERR )
+#define I2C_FLAG_ARLO		( 1 << I2C_SR1_ARLO )
+#define I2C_FLAG_AF			( 1 << I2C_SR1_AF )
+#define I2C_FLAG_OVR		( 1 << I2C_SR1_OVR )
+#define I2C_FLAG_TIMEOUT	( 1 << I2C_SR1_TIMEOUT )
+
+
 /******************************************************************************************************************
  * 										APIs supported by this driver											  *
  * 					For more information about the APIs check the function definitions							  *
@@ -74,7 +90,7 @@ void I2C_DeInit(I2C_RegDef_t *pI2Cx);
 /*
  * Data send and receive
  */
-
+void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Length, uint8_t SlaveAddr);
 
 
 /*

@@ -217,7 +217,7 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Length)
 	while(Length > 0)
 	{
 		/* Wait until TXE is set */
-		while(SPI_GetFlagStatus(pSPIx->SR, SPI_TXE_FLAG) == FLAG_RESET);
+		while(SPI_GetFlagStatus(pSPIx->SR, SPI_FLAG_TXE) == FLAG_RESET);
 
 		if( pSPIx->CR1 & (1 << SPI_CR1_DFF) )
 		{
@@ -259,7 +259,7 @@ void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Length)
 	while(Length > 0)
 	{
 		/* Wait until RXNE is set */
-		while(SPI_GetFlagStatus(pSPIx->SR, SPI_RXNE_FLAG) == FLAG_RESET);
+		while(SPI_GetFlagStatus(pSPIx->SR, SPI_FLAG_RXNE) == FLAG_RESET);
 
 		if( pSPIx->CR1 & (1 << SPI_CR1_DFF) )
 		{
@@ -352,6 +352,7 @@ uint8_t SPI_ReceiveDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffe
 	return state;
 }
 
+
 /*
  * IRQ Configuration and ISR handling
  */
@@ -368,7 +369,45 @@ uint8_t SPI_ReceiveDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffe
  * @Note			- None
  *
  *****************************************************************/
-void SPI_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi);
+void SPI_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
+{
+	if(EnorDi == ENABLE)
+	{
+		if(IRQNumber <= 31)
+		{
+			/* Program ISER0 register */
+			*NVIC_ISER0 |= (1 << IRQNumber);
+		}
+		else if(IRQNumber > 31 && IRQNumber < 64)
+		{
+			/* Program ISER1 register (32 to 63) */
+			*NVIC_ISER1 |= (1 << (IRQNumber % 32));
+		}
+		else if(IRQNumber >= 64 && IRQNumber < 96)
+		{
+			/* Program ISER2 register (64 to 95) */
+			*NVIC_ISER2 |= (1 << (IRQNumber % 64));
+		}
+	}
+	else
+	{
+		if(IRQNumber <= 31)
+		{
+			/* Program ICER0 register */
+			*NVIC_ISER0 |= (1 << IRQNumber);
+		}
+		else if(IRQNumber > 31 && IRQNumber < 64)
+		{
+			/* Program ICER1 register (32 to 63) */
+			*NVIC_ISER1 |= (1 << (IRQNumber % 32));
+		}
+		else if(IRQNumber >= 64 && IRQNumber < 96)
+		{
+			/* Program ICER2 register (64 to 95) */
+			*NVIC_ISER2 |= (1 << (IRQNumber % 64));
+		}
+	}
+}
 
 
 /*****************************************************************
@@ -384,7 +423,14 @@ void SPI_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi);
  * @Note			- None
  *
  *****************************************************************/
-void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
+void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
+{
+	uint8_t iprx = IRQNumber / 4;
+	uint8_t iprx_section = IRQNumber % 4;
+
+	uint8_t shift_amount = (8 * iprx_section) + (8 - NO_PR_BITS_IMPLEMENTED);
+	*(NVIC_PR_BASE_ADDR + iprx) |= (IRQPriority << shift_amount);
+}
 
 
 /*****************************************************************

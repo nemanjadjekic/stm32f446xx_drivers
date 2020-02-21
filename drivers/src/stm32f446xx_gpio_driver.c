@@ -407,14 +407,17 @@ void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
 		if(IRQNumber <= 31)
 		{
 			/* Program ICER0 register */
+			*NVIC_ISER0 |= (1 << IRQNumber);
 		}
 		else if(IRQNumber > 31 && IRQNumber < 64)
 		{
 			/* Program ICER1 register (32 to 63) */
+			*NVIC_ISER1 |= (1 << (IRQNumber % 32));
 		}
 		else if(IRQNumber >= 64 && IRQNumber < 96)
 		{
 			/* Program ICER2 register (64 to 95) */
+			*NVIC_ISER2 |= (1 << (IRQNumber % 64));
 		}
 	}
 }
