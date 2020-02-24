@@ -287,7 +287,7 @@ void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Length)
  * @brief			- This function sends data over SPI
  * 					  peripheral in Interrupt mode
  *
- * @param[in]		- Base address of the SPI peripheral
+ * @param[in]		- Pointer to SPI Handle structure
  * @param[in]		- Transmit buffer
  * @param[in]		- Length of transmit buffer
  *
@@ -323,7 +323,7 @@ uint8_t SPI_SendDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, 
  * @brief			- This function receives data over SPI
  * 					  peripheral in Interrupt mode
  *
- * @param[in]		- Base address of the SPI peripheral
+ * @param[in]		- Pointer to SPI Handle structure
  * @param[in]		- Transmit buffer
  * @param[in]		- Length of transmit buffer
  *

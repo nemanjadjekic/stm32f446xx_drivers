@@ -12,7 +12,8 @@ uint8_t  APB1_Prescaler[4] = {2,4,8,16};
 
 static void I2C_GenerateStartCondition(I2C_RegDef_t *pI2Cx);
 static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
-static void I2C_ExecuteAddressesPhase(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr);
+static void I2C_ExecuteAddressesPhaseWrite(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr);
+static void I2C_ExecuteAddressesPhaseRead(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr);
 static void I2C_ClearAddrFlag(I2C_RegDef_t *pI2Cx);
 
 /*
@@ -44,7 +45,7 @@ void I2C_PeriClockControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
 		{
 			I2C2_PCLK_EN();
 		}
-		else if(pI2Cx == SPI3)
+		else if(pI2Cx == I2C3)
 		{
 			I2C3_PCLK_EN();
 		}
@@ -303,17 +304,18 @@ void I2C_PeripheralControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
  *
  * @brief			- I2C Master sends data to slaves
  *
- * @param[in]		- Handle structure
- * @param[in]		- Transmit buffer
+ * @param[in]		- Pointer to I2C Handle structure
+ * @param[in]		- Pointer to transmit buffer
  * @param[in]		- Length of transmit buffer
  * @param[in]		- Slave address
+ * @param[in]		- State of status register
  *
  * @return			- None
  *
  * @Note			- None
  *
  *****************************************************************/
-void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Length, uint8_t SlaveAddr)
+void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr)
 {
 	/* Generating start condition */
 	I2C_GenerateStartCondition(pI2CHandle->pI2Cx);
@@ -322,7 +324,7 @@ void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t L
 	while( ! I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_SB) );
 
 	/* Send the address of the slave with r/nm bit set to w(0) (total 8 bits) */
-	I2C_ExecuteAddressesPhase(pI2CHandle->pI2Cx, SlaveAddr);
+	I2C_ExecuteAddressesPhaseWrite(pI2CHandle->pI2Cx, SlaveAddr);
 
 	/* Confirming address phase is completed by checking ADDR flag in SR1 */
 	while( ! I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_ADDR) );
@@ -344,7 +346,261 @@ void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t L
 	while( ! I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_TXE) );
 	while( ! I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_BTF) );
 
-	I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
+	/* Generate STOP condition and master not need to wait for the completion of stop condition */
+	if(Sr == I2C_DISABLE_SR)
+	{
+		I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
+	}
+}
+
+
+/*****************************************************************
+ * @fn				- I2C_MasterReceiveData
+ *
+ * @brief			- I2C Master receive data from slaves
+ *
+ * @param[in]		- Pointer to I2C Handle structure
+ * @param[in]		- Pointer to receive buffer
+ * @param[in]		- Length of receive buffer
+ * @param[in]		- Slave address
+ * @param[in]		- State of status register
+ *
+ * @return			- None
+ *
+ * @Note			- None
+ *
+ *****************************************************************/
+void I2C_MasterReceiveData(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr)
+{
+	/* Generating start condition */
+	I2C_GenerateStartCondition(pI2CHandle->pI2Cx);
+
+	/* Confirming start generation is completed by checking SB flag in SR1 */
+	while( ! I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_SB) );
+
+	/* Send the address of the slave with r/nm bit set to w(0) (total 8 bits) */
+	I2C_ExecuteAddressesPhaseRead(pI2CHandle->pI2Cx, SlaveAddr);
+
+	/* Confirming address phase is completed by checking ADDR flag in SR1 */
+	while( ! I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_ADDR) );
+
+	/* Procedure to read only 1 byte from slave */
+	if(Length == 1)
+	{
+		/* Disable acknowledgment */
+		I2C_ManageAcking(pI2CHandle->pI2Cx, I2C_ACK_DISABLE);
+
+		/* Generate STOP condition and master not need to wait for the completion of stop condition */
+		if(Sr == I2C_DISABLE_SR)
+		{
+			I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
+		}
+
+		/* Clear address flag */
+		I2C_ClearAddrFlag(pI2CHandle->pI2Cx);
+
+		/* Wait until RXNE becomes 1 */
+		while( ! I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_RXNE) )
+
+		/* Read the data into buffer */
+		*pRxBuffer = pI2CHandle->pI2Cx->DR;
+
+		return;
+	}
+
+	if(Length > 1)
+	{
+		/* Clear address flag */
+		I2C_ClearAddrFlag(pI2CHandle->pI2Cx);
+
+		/* Read the data into buffer until length becomes 0 */
+		for(uint32_t i = Length; i > 0; i--)
+		{
+			/* Wait until RXNE becomes 1 */
+			while( ! I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_RXNE) )
+
+			/* If last 2 bits are remaining */
+			if(i == 2)
+			{
+				/* Clear the ACK bit */
+				I2C_ManageAcking(pI2CHandle->pI2Cx, I2C_ACK_DISABLE);
+
+				/* Generate STOP condition and master not need to wait for the completion of stop condition */
+				if(Sr == I2C_DISABLE_SR)
+				{
+					I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
+				}
+			}
+
+			/* Read the data from data register in to the buffer */
+			*pRxBuffer = pI2CHandle->pI2Cx->DR;
+
+			/* Increment the buffer address */
+			pRxBuffer++;
+
+		}
+	}
+
+	/* Re-enable ACK */
+	if(pI2CHandle->I2C_Config.I2C_ACKControl == I2C_ACK_ENABLE)
+	{
+		I2C_ManageAcking(pI2CHandle->pI2Cx, I2C_ACK_ENABLE);
+	}
+}
+
+
+/*****************************************************************
+ * @fn				- I2C_SendDataInterruptMode
+ *
+ * @brief			- This function sends data over I2C
+ * 					  peripheral in Interrupt mode
+ *
+ * @param[in]		- Pointer to I2C Handle structure
+ * @param[in]		- Pointer to transmit buffer
+ * @param[in]		- Length of transmit buffer
+ * @param[in]		- Slave address
+ * @param[in]		- State of status register
+ *
+ * @return			- Tx State
+ *
+ * @Note			- None
+ *
+ *****************************************************************/
+uint8_t I2C_SendDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr)
+{
+
+}
+
+
+/*****************************************************************
+ * @fn				- I2C_ReceiveDataInterruptMode
+ *
+ * @brief			- This function receives data over I2C
+ * 					  peripheral in Interrupt mode
+ *
+ * @param[in]		- Pointer to I2C Handle structure
+ * @param[in]		- Pointer to receive buffer
+ * @param[in]		- Length of receive buffer
+ * @param[in]		- Slave address
+ * @param[in]		- State of status register
+ *
+ * @return			- Rx State
+ *
+ * @Note			- None
+ *
+ *****************************************************************/
+uint8_t I2C_ReceiveDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr)
+{
+
+}
+
+
+/*****************************************************************
+ * @fn				- I2C_ManageAcking
+ *
+ * @brief			- This function manages acknowledgment bit
+ *
+ * @param[in]		- Base address of the I2C peripheral
+ * @param[in]		- Name of flag
+ *
+ * @return			- Flag status (True/False)
+ *
+ * @Note			- None
+ *
+ *****************************************************************/
+void I2C_ManageAcking(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
+{
+	if(EnorDi == I2C_ACK_ENABLE)
+	{
+		/* Enable ACK */
+		pI2Cx->CR1 |= ( 1 << I2C_CR1_ACK);
+	}
+	else
+	{
+		/* Disable ACK */
+		pI2Cx->CR1 &= ~( 1 << I2C_CR1_ACK);
+	}
+}
+
+
+
+/*
+ * IRQ Configuration and ISR handling
+ */
+/*****************************************************************
+ * @fn				- I2C_IRQConfig
+ *
+ * @brief			- This function configures interrupt
+ *
+ * @param[in]		- IRQ Interrupt number
+ * @param[in]		- Macro: Enable/Disable
+ *
+ * @return			- None
+ *
+ * @Note			- None
+ *
+ *****************************************************************/
+void I2C_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
+{
+	if(EnorDi == ENABLE)
+	{
+		if(IRQNumber <= 31)
+		{
+			/* Program ISER0 register */
+			*NVIC_ISER0 |= (1 << IRQNumber);
+		}
+		else if(IRQNumber > 31 && IRQNumber < 64)
+		{
+			/* Program ISER1 register (32 to 63) */
+			*NVIC_ISER1 |= (1 << (IRQNumber % 32));
+		}
+		else if(IRQNumber >= 64 && IRQNumber < 96)
+		{
+			/* Program ISER2 register (64 to 95) */
+			*NVIC_ISER2 |= (1 << (IRQNumber % 64));
+		}
+	}
+	else
+	{
+		if(IRQNumber <= 31)
+		{
+			/* Program ICER0 register */
+			*NVIC_ISER0 |= (1 << IRQNumber);
+		}
+		else if(IRQNumber > 31 && IRQNumber < 64)
+		{
+			/* Program ICER1 register (32 to 63) */
+			*NVIC_ISER1 |= (1 << (IRQNumber % 32));
+		}
+		else if(IRQNumber >= 64 && IRQNumber < 96)
+		{
+			/* Program ICER2 register (64 to 95) */
+			*NVIC_ISER2 |= (1 << (IRQNumber % 64));
+		}
+	}
+}
+
+
+/*****************************************************************
+ * @fn				- I2C_IRQPriorityConfig
+ *
+ * @brief			- This function configures interrupt priority
+ *
+ * @param[in]		- IRQ Interrupt number
+ * @param[in]		- IRQ interrupt priority
+ *
+ * @return			- None
+ *
+ * @Note			- None
+ *
+ *****************************************************************/
+void I2C_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
+{
+	uint8_t iprx = IRQNumber / 4;
+	uint8_t iprx_section = IRQNumber % 4;
+
+	uint8_t shift_amount = (8 * iprx_section) + (8 - NO_PR_BITS_IMPLEMENTED);
+	*(NVIC_PR_BASE_ADDR + iprx) |= (IRQPriority << shift_amount);
 }
 
 
@@ -388,10 +644,10 @@ static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
 
 
 /*****************************************************************
- * @fn				- I2C_ExecuteAddressesPhase
+ * @fn				- I2C_ExecuteAddressesPhaseWrite
  *
  * @brief			- Send the address of the slave with r/nm
- * 					  bit set to w(0) (total 8 bits)
+ * 					  bit set to r/nw(0) (total 8 bits)
  *
  * @param[in]		- Base address of the I2C peripheral
  * @param[in]		- Slave address
@@ -401,7 +657,30 @@ static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
  * @Note			- None
  *
  *****************************************************************/
-static void I2C_ExecuteAddressesPhase(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr)
+static void I2C_ExecuteAddressesPhaseWrite(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr)
+{
+	SlaveAddr = SlaveAddr << 1;
+	/* SlaveAddr is Slave address + r/nw bit=0 */
+	SlaveAddr &= ~(1);
+	pI2Cx->DR = SlaveAddr;
+}
+
+
+/*****************************************************************
+ * @fn				- I2C_ExecuteAddressesPhaseRead
+ *
+ * @brief			- Send the address of the slave with r/nm
+ * 					  bit set to r/nw(1) (total 8 bits)
+ *
+ * @param[in]		- Base address of the I2C peripheral
+ * @param[in]		- Slave address
+ *
+ * @return			- None
+ *
+ * @Note			- None
+ *
+ *****************************************************************/
+static void I2C_ExecuteAddressesPhaseRead(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr)
 {
 	SlaveAddr = SlaveAddr << 1;
 	/* SlaveAddr is Slave address + r/nw bit=1 */

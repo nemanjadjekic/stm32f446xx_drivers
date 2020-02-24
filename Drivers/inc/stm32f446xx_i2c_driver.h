@@ -29,7 +29,23 @@ typedef struct
 {
 	I2C_RegDef_t *pI2Cx;	 /* This holds the base address of I2Cx(x:0,1,2) peripheral */
 	I2C_Config_t I2C_Config;
+	uint8_t 	 *pTxBuffer; /* Stores application Tx buffer address */
+	uint8_t 	 *pRxBuffer; /* Stores application Rx buffer address */
+	uint32_t 	 TxLen; 	 /* Stores Tx length					 */
+	uint32_t 	 RxLen; 	 /* Stores Rx length					 */
+	uint8_t		 TxRxState;  /* Stores communication state			 */
+	uint8_t		 DevAddr;	 /* Stores slave/device address			 */
+	uint32_t	 RxSize;	 /* Stores Rx size						 */
+	uint8_t		 Sr;		 /* Stores repeated start value			 */
 }I2C_Handle_t;
+
+
+/*
+ * Possible I2C Application states
+ */
+#define I2C_READY				0
+#define I2C_BUSY_IN_RX			1
+#define I2C_BUSY_IN_TX			2
 
 
 /*
@@ -69,6 +85,9 @@ typedef struct
 #define I2C_FLAG_OVR		( 1 << I2C_SR1_OVR )
 #define I2C_FLAG_TIMEOUT	( 1 << I2C_SR1_TIMEOUT )
 
+#define I2C_DISABLE_SR  	RESET
+#define I2C_ENABLE_SR   	SET
+
 
 /******************************************************************************************************************
  * 										APIs supported by this driver											  *
@@ -90,7 +109,15 @@ void I2C_DeInit(I2C_RegDef_t *pI2Cx);
 /*
  * Data send and receive
  */
-void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Length, uint8_t SlaveAddr);
+void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr);
+void I2C_MasterReceiveData(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr);
+
+
+/*
+ * Data send and receive in Interrupt mode
+ */
+uint8_t I2C_SendDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr);
+uint8_t I2C_ReceiveDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr);
 
 
 /*
@@ -105,6 +132,7 @@ void I2C_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
  */
 uint8_t I2C_GetFlagStatus(I2C_RegDef_t *pI2Cx, uint32_t FlagName);
 void I2C_PeripheralControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi);
+void I2C_ManageAcking(I2C_RegDef_t *pI2Cx, uint8_t EnorDi);
 
 
 /*
