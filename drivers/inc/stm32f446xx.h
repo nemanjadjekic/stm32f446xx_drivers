@@ -607,11 +607,11 @@ typedef struct
  * Bit position definitions I2C_CR2
  */
 #define I2C_CR2_FREQ	 			0
-#define I2C_CR1_ITERREN	 			8
+#define I2C_CR2_ITERREN	 			8
 #define I2C_CR2_ITEVTEN				9
-#define I2C_CR1_ITBUFEN				10
-#define I2C_CR1_DMAEN				11
-#define I2C_CR1_LAST				12
+#define I2C_CR2_ITBUFEN				10
+#define I2C_CR2_DMAEN				11
+#define I2C_CR2_LAST				12
 
 
 /*
