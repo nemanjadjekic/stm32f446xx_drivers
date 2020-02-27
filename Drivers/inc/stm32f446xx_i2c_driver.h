@@ -131,8 +131,8 @@ void I2C_MasterReceiveData(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_
 /*
  * Data send and receive in Interrupt mode
  */
-uint8_t I2C_SendDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr);
-uint8_t I2C_ReceiveDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr);
+uint8_t I2C_MasterSendDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr);
+uint8_t I2C_MasterReceiveDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr);
 
 void I2C_CloseSendData(I2C_Handle_t *pI2CHandle);
 void I2C_CloseReceiveData(I2C_Handle_t *pI2CHandle);
@@ -153,6 +153,7 @@ void I2C_ER_IRQHandling(I2C_Handle_t *pI2CHandle);
 uint8_t I2C_GetFlagStatus(I2C_RegDef_t *pI2Cx, uint32_t FlagName);
 void I2C_PeripheralControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi);
 void I2C_ManageAcking(I2C_RegDef_t *pI2Cx, uint8_t EnorDi);
+void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
 
 
 /*
