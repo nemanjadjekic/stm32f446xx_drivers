@@ -485,7 +485,6 @@ uint8_t I2C_MasterSendDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pTxBu
 		/* Generating start condition */
 		I2C_GenerateStartCondition(pI2CHandle->pI2Cx);
 
-
 		/* Enable ITBUFEN Control Bit */
 		pI2CHandle->pI2Cx->CR2 |= (1 << I2C_CR2_ITBUFEN);
 
@@ -751,7 +750,18 @@ void I2C_EV_IRQHandling(I2C_Handle_t *pI2CHandle)
 		/* Checking device mode */
 		if(pI2CHandle->pI2Cx->SR2 & (1 << I2C_SR2_MSL))
 		{
-			I2C_MasterHandleTXEInterrupt(pI2CHandle);
+			if(pI2CHandle->TxRxState == I2C_BUSY_IN_TX)
+			{
+				I2C_MasterHandleTXEInterrupt(pI2CHandle);
+			}
+		}
+		else
+		{
+			/* Checking if slave is really in Tx mode */
+			if(pI2CHandle->pI2Cx->SR2 & (1 << I2C_SR2_TRA))
+			{
+				I2C_ApplicationEventCallback(pI2CHandle,I2C_EV_DATA_REQ);
+			}
 		}
 	}
 
@@ -763,7 +773,18 @@ void I2C_EV_IRQHandling(I2C_Handle_t *pI2CHandle)
 		if(pI2CHandle->pI2Cx->SR2 & (1 << I2C_SR2_MSL))
 		{
 			/* RXNE flag is set */
-			I2C_MasterHandleRXNEInterrupt(pI2CHandle);
+			if(pI2CHandle->TxRxState == I2C_BUSY_IN_RX)
+			{
+				I2C_MasterHandleRXNEInterrupt(pI2CHandle);
+			}
+		}
+		else
+		{
+			/* Checking if slave is really in Rx mode */
+			if(!(pI2CHandle->pI2Cx->SR2 & (1 << I2C_SR2_TRA)))
+			{
+				I2C_ApplicationEventCallback(pI2CHandle,I2C_EV_DATA_RCV);
+			}
 		}
 	}
 }
@@ -1126,7 +1147,7 @@ static void I2C_MasterHandleRXNEInterrupt(I2C_Handle_t *pI2CHandle)
 		I2C_CloseReceiveData(pI2CHandle);
 
 		/* Notify application about transmission complete */
-		I2C_ApplicationEventCallback(pI2CHandle, I2C_EV_TX_CMPLT);
+		I2C_ApplicationEventCallback(pI2CHandle, I2C_EV_RX_CMPLT);
 	}
 }
 

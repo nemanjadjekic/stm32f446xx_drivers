@@ -1,0 +1,8 @@
+012_I2C_MasterRx_IRQ.c:21:6:delay	16	static
+012_I2C_MasterRx_IRQ.c:36:6:I2C1_GPIOInits	24	static
+012_I2C_MasterRx_IRQ.c:59:6:I2C1_Inits	8	static
+012_I2C_MasterRx_IRQ.c:70:6:GPIO_ButtonInit	32	static
+012_I2C_MasterRx_IRQ.c:97:5:main	24	static
+012_I2C_MasterRx_IRQ.c:165:6:I2C1_EV_IRQHandler	8	static
+012_I2C_MasterRx_IRQ.c:171:6:I2C1_ER_IRQHandler	8	static
+012_I2C_MasterRx_IRQ.c:178:6:I2C_ApplicationEventCallback	16	static
