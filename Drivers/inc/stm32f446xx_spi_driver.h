@@ -178,7 +178,4 @@ void SPI_CloseReception(SPI_Handle_t *pSPIHandle);
 void SPI_ApplicationEventCallback(SPI_Handle_t *pSPIHandle, uint8_t AppEvent);
 
 
-#include  <stm32f446xx.h>
-
-
 #endif /* INC_STM32F446XX_SPI_DRIVER_H_ */

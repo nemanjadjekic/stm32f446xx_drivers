@@ -123,6 +123,7 @@ int main(void)
 	uint8_t dummyWrite = 0xFF;
 	uint8_t dummyRead;
 
+	/* Initialize button */
 	GPIO_ButtonInit();
 
 	/* Initialize GPIO pins to behave as SPI2 pins */

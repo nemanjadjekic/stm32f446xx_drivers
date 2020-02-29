@@ -99,26 +99,26 @@ void SPI_Init(SPI_Handle_t *pSPIHandle)
 	SPI_PeriClockControl(pSPIHandle->pSPIx, ENABLE);
 
 	/* Device mode configuration */
-	tempreg |= pSPIHandle->SPIConfig.SPI_DeviceMode << 2;
+	tempreg |= pSPIHandle->SPIConfig.SPI_DeviceMode << SPI_CR1_MSTR;
 
 	/* Bus configuration */
 	if(pSPIHandle->SPIConfig.SPI_BusConfig == SPI_BUS_CONFIG_FD)
 	{
 		/* Bidirectional mode clear */
-		tempreg &= ~(1 << 15);
+		tempreg &= ~(1 << SPI_CR1_BIDI_MODE);
 	}
 	else if(pSPIHandle->SPIConfig.SPI_BusConfig == SPI_BUS_CONFIG_HD)
 	{
 		/* Bidirectional mode set */
-		tempreg |= (1 << 15);
+		tempreg |= (1 << SPI_CR1_BIDI_MODE);
 	}
 	else if(pSPIHandle->SPIConfig.SPI_BusConfig == SPI_BUS_CONFIG_SIMPLEX_RX_ONLY)
 	{
 		/* Bidirectional mode clear */
-		tempreg &= ~(1 << 15);
+		tempreg &= ~(1 << SPI_CR1_BIDI_MODE);
 
 		/* Rx only mode set */
-		tempreg &= ~(1 << 10);
+		tempreg |= (1 << SPI_CR1_RX_ONLY);
 	}
 
 	/* SPI serial clock speed (baud rate) configuration */
@@ -217,7 +217,7 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Length)
 	while(Length > 0)
 	{
 		/* Wait until TXE is set */
-		while(SPI_GetFlagStatus(pSPIx->SR, SPI_FLAG_TXE) == FLAG_RESET);
+		while(SPI_GetFlagStatus(pSPIx->SR, SPI_FLAG_TXE) == (uint8_t)FLAG_RESET);
 
 		if( pSPIx->CR1 & (1 << SPI_CR1_DFF) )
 		{
@@ -259,7 +259,7 @@ void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Length)
 	while(Length > 0)
 	{
 		/* Wait until RXNE is set */
-		while(SPI_GetFlagStatus(pSPIx->SR, SPI_FLAG_RXNE) == FLAG_RESET);
+		while(SPI_GetFlagStatus(pSPIx->SR, SPI_FLAG_RXNE) == (uint8_t)FLAG_RESET);
 
 		if( pSPIx->CR1 & (1 << SPI_CR1_DFF) )
 		{
@@ -273,7 +273,7 @@ void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Length)
 		else
 		{
 			/* 8 bit */
-			*((uint16_t*)pRxBuffer) = pSPIx->DR;
+			*(pRxBuffer) = pSPIx->DR;
 			Length--;
 			pRxBuffer++;
 		}
@@ -312,7 +312,7 @@ uint8_t SPI_SendDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, 
 		/* Enable TXEIE control bit to get interrupt whenever TXE flag is set in SR */
 		pSPIHandle->pSPIx->CR2 |= (1 << SPI_CR2_TXEIE);
 	}
-
+	/* DBG->Data transmission*/
 	return state;
 }
 
@@ -394,17 +394,17 @@ void SPI_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
 		if(IRQNumber <= 31)
 		{
 			/* Program ICER0 register */
-			*NVIC_ISER0 |= (1 << IRQNumber);
+			*NVIC_ICER0 |= (1 << IRQNumber);
 		}
 		else if(IRQNumber > 31 && IRQNumber < 64)
 		{
 			/* Program ICER1 register (32 to 63) */
-			*NVIC_ISER1 |= (1 << (IRQNumber % 32));
+			*NVIC_ICER1 |= (1 << (IRQNumber % 32));
 		}
 		else if(IRQNumber >= 64 && IRQNumber < 96)
 		{
 			/* Program ICER2 register (64 to 95) */
-			*NVIC_ISER2 |= (1 << (IRQNumber % 64));
+			*NVIC_ICER2 |= (1 << (IRQNumber % 64));
 		}
 	}
 }
@@ -460,7 +460,7 @@ void SPI_IRQHandling(SPI_Handle_t *pHandle)
 		spi_txe_interrupt_handle(pHandle);
 	}
 
-	/* Check for RXE */
+	/* Check for RXNE */
 	temp1 = pHandle->pSPIx->SR & (1 << SPI_SR_RXNE);
 	temp2 = pHandle->pSPIx->CR2 & (1 << SPI_CR2_RXNEIE);
 
@@ -682,7 +682,7 @@ static void spi_txe_interrupt_handle(SPI_Handle_t *pSPIHandle)
 	if(!pSPIHandle->TxLen)
 	{
 		/* Tx is zero. Close SPI communication and inform application about it.
-		 * Prevents interrupts from setting up of TXE flag.S */
+		 * Prevents interrupts from setting up of TXE flag. */
 		SPI_CloseTransmission(pSPIHandle);
 		SPI_ApplicationEventCallback(pSPIHandle, SPI_EVENT_TX_CMPLT);
 	}
@@ -705,9 +705,9 @@ static void spi_rxne_interrupt_handle(SPI_Handle_t *pSPIHandle)
 {
 	if( pSPIHandle->pSPIx->CR1 & (1 << SPI_CR1_DFF) )
 	{
-		/* Load data into data register */
+		/* Load data from data register into buffer */
 		/* 16 bit */
-		pSPIHandle->pSPIx->DR = *((uint16_t*)pSPIHandle->pRxBuffer);
+		*((uint16_t*)pSPIHandle->pRxBuffer) = pSPIHandle->pSPIx->DR;
 		pSPIHandle->RxLen--;
 		pSPIHandle->RxLen--;
 		(uint16_t*)pSPIHandle->pRxBuffer++;
@@ -715,15 +715,15 @@ static void spi_rxne_interrupt_handle(SPI_Handle_t *pSPIHandle)
 	else
 	{
 		/* 8 bit */
-		pSPIHandle->pSPIx->DR = *pSPIHandle->pRxBuffer;
+		*pSPIHandle->pRxBuffer = pSPIHandle->pSPIx->DR;//DBG->Check brackets
 		pSPIHandle->RxLen--;
 		pSPIHandle->pRxBuffer++;
 	}
 
 	if(!pSPIHandle->RxLen)
 	{
-		/* Tx is zero. Close SPI communication and inform application about it.
-		 * Prevents interrupts from setting up of TXE flag.S */
+		/* Rx is zero. Close SPI communication and inform application about it.
+		 * Prevents interrupts from setting up of RXNE flag. */
 		SPI_CloseReception(pSPIHandle);
 		SPI_ApplicationEventCallback(pSPIHandle, SPI_EVENT_RX_CMPLT);
 	}
