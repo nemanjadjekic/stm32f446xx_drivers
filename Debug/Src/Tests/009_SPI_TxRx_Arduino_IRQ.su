@@ -1,8 +1,0 @@
-009_SPI_TxRx_Arduino_IRQ.c:51:6:SPI2_GPIOInits	24	static
-009_SPI_TxRx_Arduino_IRQ.c:81:6:SPI2_Inits	8	static
-009_SPI_TxRx_Arduino_IRQ.c:98:6:GPIO_ButtonInit	24	static
-009_SPI_TxRx_Arduino_IRQ.c:114:6:delay	16	static
-009_SPI_TxRx_Arduino_IRQ.c:120:9:SPI_VerifyResponse	16	static
-009_SPI_TxRx_Arduino_IRQ.c:131:5:main	16	static
-009_SPI_TxRx_Arduino_IRQ.c:247:6:SPI2_IRQHandler	8	static
-009_SPI_TxRx_Arduino_IRQ.c:252:6:SPI_ApplicationEventCallback	16	static

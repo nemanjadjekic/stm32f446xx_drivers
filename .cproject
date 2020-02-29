@@ -72,13 +72,13 @@
 							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec.228198163" name="MCU Output Converter Motorola S-rec with symbols" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec"/>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.1618496111.25732862" name="009_SPI_TxRx_Arduino_IRQ.c" rcbsApplicability="disable" resourcePath="Src/Tests/009_SPI_TxRx_Arduino_IRQ.c" toolsToInvoke="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1343170027.1349748821">
-						<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1343170027.1349748821" name="MCU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1343170027"/>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.1618496111.1806141932" name="009_SPI_TxRx_Arduino_IRQ.c" rcbsApplicability="disable" resourcePath="Src/Tests/009_SPI_TxRx_Arduino_IRQ.c" toolsToInvoke="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1343170027.2063770302">
+						<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1343170027.2063770302" name="MCU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1343170027"/>
 					</fileInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
-						<entry excluding="Tests/012_I2C_MasterRx_IRQ.c|Tests/008_SPI_TxRx_Arduino.c|Tests/011_I2C_MasterRx.c|Tests/010_I2C_MasterTx.c|Tests/007_SPI_Tx_Arduino.c|Tests/004_LedToggle_Button.c|Tests/005_Button_Interrupt.c|main.c|Tests/006_SPI_SendData.c|Tests/002_LedToggle_PushPullCfg.c|Tests/003_LedToggle_OpenDrainCfg.c|Tests/001_Printf.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
+						<entry excluding="Tests/009_SPI_TxRx_Arduino_IRQ.c|Tests/012_I2C_MasterRx_IRQ.c|Tests/008_SPI_TxRx_Arduino.c|Tests/011_I2C_MasterRx.c|Tests/010_I2C_MasterTx.c|Tests/007_SPI_Tx_Arduino.c|Tests/004_LedToggle_Button.c|Tests/005_Button_Interrupt.c|main.c|Tests/006_SPI_SendData.c|Tests/002_LedToggle_PushPullCfg.c|Tests/003_LedToggle_OpenDrainCfg.c|Tests/001_Printf.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Startup"/>
 					</sourceEntries>
 				</configuration>
