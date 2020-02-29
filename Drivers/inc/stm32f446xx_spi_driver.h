@@ -156,7 +156,7 @@ uint8_t SPI_ReceiveDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffe
  * IRQ Configuration and ISR handling
  */
 void SPI_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi);
-void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
+void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority);
 void SPI_IRQHandling(SPI_Handle_t *pHandle);
 
 

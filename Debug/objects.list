@@ -1,6 +1,8 @@
 "Drivers/src/stm32f446xx_gpio_driver.o"
 "Drivers/src/stm32f446xx_i2c_driver.o"
 "Drivers/src/stm32f446xx_spi_driver.o"
+"Drivers/src/stm32f446xx_usart_driver.o"
+"Drivers/src/stm32f466xx_rcc_driver.o"
 "Src/Tests/013_I2C_SlaveTxRx.o"
 "Src/syscalls.o"
 "Src/sysmem.o"

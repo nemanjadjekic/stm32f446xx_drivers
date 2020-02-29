@@ -5,10 +5,7 @@
  *      Author: nemanja
  */
 
-#include <stm32f446xx_gpio_driver.h>
-
-uint16_t AHB_Prescaler[8] = {2,4,8,16,32,64,128,256,512};
-uint8_t  APB1_Prescaler[4] = {2,4,8,16};
+#include <stm32f446xx_i2c_driver.h>
 
 static void I2C_GenerateStartCondition(I2C_RegDef_t *pI2Cx);
 static void I2C_ExecuteAddressPhaseWrite(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr);
@@ -69,84 +66,6 @@ void I2C_PeriClockControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
 }
 
 
-/*****************************************************************
- * @fn				- RCC_GetPLLOutputClock
- *
- * @brief			- This function returns PLL output value
- *
- *
- * @return			- PLL output value
- *
- * @Note			- None
- *
- *****************************************************************/
-uint32_t RCC_GetPLLOutputClock(void)
-{
-	/* Not used for now */
-	return 0;
-}
-
-/*****************************************************************
- * @fn				- RCC_GetPCLK1Value
- *
- * @brief			- This function returns PClock 1 value
- *
- *
- * @return			- PClock 1 value
- *
- * @Note			- None
- *
- *****************************************************************/
-uint32_t RCC_GetPCLK1Value(void)
-{
-	uint32_t pclk1, SystemClk;
-	uint8_t clksrc, temp, ahbp, apb1p;
-
-	clksrc = ((RCC->CFGR >> 2) & 0x3);
-
-	if(clksrc == 0)
-	{
-		SystemClk = 16000000;
-	}
-	else if(clksrc == 1)
-	{
-		SystemClk = 8000000;
-	}
-	else if(clksrc == 2)
-	{
-		SystemClk = RCC_GetPLLOutputClock();
-	}
-
-	/* AHBP */
-	temp = ((RCC->CFGR >> 4) & 0xF);
-
-	if(temp < 8)
-	{
-		ahbp = 1;
-	}
-	else
-	{
-		ahbp = AHB_Prescaler[temp-8];
-	}
-
-	/* APB1 */
-	temp = ((RCC->CFGR >> 10) & 0x7);
-
-	if(temp < 8)
-	{
-		apb1p = 1;
-	}
-	else
-	{
-		apb1p = APB1_Prescaler[temp-4];
-	}
-
-	pclk1 = (SystemClk / ahbp) / apb1p;
-
-	return pclk1;
-}
-
-
 /*
  * Init and De-Init
  */
@@ -170,7 +89,7 @@ void I2C_Init(I2C_Handle_t *pI2CHandle)
 	I2C_PeriClockControl(pI2CHandle->pI2Cx, ENABLE);
 
 	/* ACK control bit */
-	tempreg |= pI2CHandle->I2C_Config.I2C_ACKControl << 10;
+	tempreg |= pI2CHandle->I2C_Config.I2C_ACKControl << I2C_CR1_ACK;
 	pI2CHandle->pI2Cx->CR1 = tempreg;
 
 	/* CR2 FREQ filed configuration */
@@ -181,7 +100,7 @@ void I2C_Init(I2C_Handle_t *pI2CHandle)
 	/* Programming device own address */
 	tempreg = 0;
 	tempreg |= pI2CHandle->I2C_Config.I2C_DeviceAddress << 1;
-	tempreg |= (1 << 14);
+	tempreg |= (1 << I2C_OAR1_ADDMODE);
 	pI2CHandle->pI2Cx->OAR1 = tempreg;
 
 	/* CCR calculations */
@@ -684,7 +603,7 @@ void I2C_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
  * @Note			- None
  *
  *****************************************************************/
-void I2C_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
+void I2C_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
 {
 	uint8_t iprx = IRQNumber / 4;
 	uint8_t iprx_section = IRQNumber % 4;

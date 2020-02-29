@@ -4,8 +4,8 @@
  *  Created on: Jan 26, 2020
  *      Author: nemanja
  */
-#include <stm32f446xx_spi_driver.h>
 
+#include <stm32f446xx_spi_driver.h>
 
 /*
  * Helper functions
@@ -423,7 +423,7 @@ void SPI_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
  * @Note			- None
  *
  *****************************************************************/
-void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
+void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
 {
 	uint8_t iprx = IRQNumber / 4;
 	uint8_t iprx_section = IRQNumber % 4;
