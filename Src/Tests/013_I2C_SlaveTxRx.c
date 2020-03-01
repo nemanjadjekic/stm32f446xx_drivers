@@ -21,7 +21,7 @@ void delay(void)
 
 I2C_Handle_t I2C1Handle;
 
-/* Receive buffer */
+/* Transmitter buffer */
 uint8_t tx_buff[32] = "STM32 Slave Mode testing..";
 
 

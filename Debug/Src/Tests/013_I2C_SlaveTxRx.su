@@ -1,8 +1,0 @@
-013_I2C_SlaveTxRx.c:16:6:delay	16	static
-013_I2C_SlaveTxRx.c:32:6:I2C1_GPIOInits	24	static
-013_I2C_SlaveTxRx.c:54:6:I2C1_Inits	8	static
-013_I2C_SlaveTxRx.c:66:6:GPIO_ButtonInit	32	static
-013_I2C_SlaveTxRx.c:93:5:main	8	static
-013_I2C_SlaveTxRx.c:122:6:I2C1_EV_IRQHandler	8	static
-013_I2C_SlaveTxRx.c:128:6:I2C1_ER_IRQHandler	8	static
-013_I2C_SlaveTxRx.c:134:6:I2C_ApplicationEventCallback	24	static
