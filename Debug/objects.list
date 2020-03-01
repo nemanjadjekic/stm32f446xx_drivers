@@ -3,7 +3,7 @@
 "Drivers/src/stm32f446xx_spi_driver.o"
 "Drivers/src/stm32f446xx_usart_driver.o"
 "Drivers/src/stm32f466xx_rcc_driver.o"
-"Src/Tests/014_USART_Tx.o"
+"Src/Tests/015_USART_TxRx_IRQ.o"
 "Src/syscalls.o"
 "Src/sysmem.o"
 "Startup/startup_stm32f446retx.o"
