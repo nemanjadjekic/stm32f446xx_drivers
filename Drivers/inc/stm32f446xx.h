@@ -118,9 +118,8 @@
 
 
 /**********************************************************************************************
- * Peripheral register definition structures
+ *			Peripheral register definition structures
  **********************************************************************************************/
-
 /*
  * Peripheral register definition structure for GPIO
  */
@@ -352,6 +351,7 @@ typedef struct
 #define GPIOG_PCLK_DI()		( RCC->AHB1ENR &= ~(1 << 6) ) /* GPIOG peripheral clock disabled */
 #define GPIOH_PCLK_DI()		( RCC->AHB1ENR &= ~(1 << 7) ) /* GPIOH peripheral clock disabled */
 
+
 /*
  * Clock Disable Macros for I2Cx peripherals
  */
@@ -442,7 +442,7 @@ typedef struct
 
 /*
  * IRQ(Interrupt Request) Numbers of STM32F446x MCU
- * NOTE: update these macros with valid values according to your MCU
+ * NOTE: Update these macros with valid values according to your MCU
  */
 #define IRQ_NO_WWDG			0   /* Window Watchdog interrupt 				 	  */
 #define IRQ_NO_PVD			1   /* PVD through EXTI line detection interrupt 		  	  */
@@ -566,9 +566,8 @@ typedef struct
 #define FLAG_RESET		RESET
 
 
-//TODO: Write bit macros
 /******************************************************************************************
- *Bit position definitions of SPI peripheral
+ *			Bit position definitions of SPI peripheral
  ******************************************************************************************/
 /*
  * Bit position definitions SPI_CR1
@@ -616,7 +615,7 @@ typedef struct
 
 
 /******************************************************************************************
- *Bit position definitions of I2C peripheral
+ *			Bit position definitions of I2C peripheral
  ******************************************************************************************/
 /*
  * Bit position definitions I2C_CR1
@@ -697,7 +696,7 @@ typedef struct
 
 
 /******************************************************************************************
- *Bit position definitions of U(S)ART peripheral
+ *			Bit position definitions of U(S)ART peripheral
  ******************************************************************************************/
 /*
  * Bit position definitions USART_SR
