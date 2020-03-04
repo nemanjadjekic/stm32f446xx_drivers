@@ -11,14 +11,14 @@ uint16_t AHB_Prescaler[8] = {2,4,8,16,32,64,128,256,512};
 uint8_t  APBx_Prescaler[4] = {2,4,8,16};
 
 /*****************************************************************
- * @fn				- RCC_GetPCLK1Value
+ * @fn			- RCC_GetPCLK1Value
  *
- * @brief			- This function returns PClock 1 value
+ * @brief		- This function returns PClock 1 value
  *
  *
- * @return			- PClock 1 value
+ * @return		- PClock 1 value
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 uint32_t RCC_GetPCLK1Value(void)
@@ -72,14 +72,14 @@ uint32_t RCC_GetPCLK1Value(void)
 
 
 /*****************************************************************
- * @fn				- RCC_GetPCLK2Value
+ * @fn			- RCC_GetPCLK2Value
  *
- * @brief			- This function returns PClock 2 value
+ * @brief		- This function returns PClock 2 value
  *
  *
- * @return			- PClock 2 value
+ * @return		- PClock 2 value
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 uint32_t RCC_GetPCLK2Value(void)
@@ -134,14 +134,14 @@ uint32_t RCC_GetPCLK2Value(void)
 
 
 /*****************************************************************
- * @fn				- RCC_GetPLLOutputClock
+ * @fn			- RCC_GetPLLOutputClock
  *
- * @brief			- This function returns PLL output value
+ * @brief		- This function returns PLL output value
  *
  *
- * @return			- PLL output value
+ * @return		- PLL output value
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 uint32_t RCC_GetPLLOutputClock(void)
