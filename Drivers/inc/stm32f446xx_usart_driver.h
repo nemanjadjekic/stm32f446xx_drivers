@@ -115,20 +115,20 @@ typedef struct
 /*
  * Application states
  */
-#define USART_READY 0
-#define USART_BUSY_IN_RX 1
-#define USART_BUSY_IN_TX 2
+#define USART_READY		0
+#define USART_BUSY_IN_RX 	1
+#define USART_BUSY_IN_TX 	2
 
 
 /* Application events */
-#define 	USART_EVENT_TX_CMPLT   0
-#define		USART_EVENT_RX_CMPLT   1
-#define		USART_EVENT_IDLE       2
-#define		USART_EVENT_CTS        3
-#define		USART_EVENT_PE         4
-#define		USART_ERR_FE           5
-#define		USART_ERR_NE	       6
-#define		USART_ERR_ORE          7
+#define USART_EVENT_TX_CMPLT   	0
+#define	USART_EVENT_RX_CMPLT   	1
+#define	USART_EVENT_IDLE      	2
+#define	USART_EVENT_CTS       	3
+#define	USART_EVENT_PE        	4
+#define	USART_ERR_FE           	5
+#define	USART_ERR_NE	       	6
+#define	USART_ERR_ORE          	7
 
 
 /******************************************************************************************
