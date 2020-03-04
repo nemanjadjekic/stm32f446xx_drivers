@@ -15,4 +15,4 @@ Inside Test folder, there are Arduino sketches which are used for communication 
 Pull requests are welcome. If you discover any bug/issue feel free to report it.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/nemanjadjekic/stm32f446xx_drivers/blob/master/LICENSE)
