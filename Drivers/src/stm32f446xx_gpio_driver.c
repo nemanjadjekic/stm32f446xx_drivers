@@ -12,17 +12,17 @@
  */
 
 /*****************************************************************
- * @fn				- GPIO_PeriClockControl
+ * @fn			- GPIO_PeriClockControl
  *
- * @brief			- This function enables or disables peripheral
- * 					  clock for the given GPIO port
+ * @brief		- This function enables or disables peripheral
+ * 			  clock for the given GPIO port
  *
  * @param[in]		- Base address of the GPIO peripheral
- * @param[in]		- Macros:	Enable or Disable
+ * @param[in]		- Macros: Enable or Disable
  *
- * @return			- None
+ * @return		- None
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi)
@@ -105,15 +105,15 @@ void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi)
  * Init and De-Init
  */
 /*****************************************************************
- * @fn				- GPIO_Init
+ * @fn			- GPIO_Init
  *
- * @brief			- This function initialize GPIO peripherals
+ * @brief		- This function initialize GPIO peripherals
  *
  * @param[in]		- Pointer to GPIO Handle structure
  *
- * @return			- None
+ * @return		- None
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
@@ -200,15 +200,15 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 
 
 /*****************************************************************
- * @fn				- GPIO_DeInit
+ * @fn			- GPIO_DeInit
  *
- * @brief			- This function de-initialize GPIO peripherals
+ * @brief		- This function de-initialize GPIO peripherals
  *
  * @param[in]		- Base address of the GPIO peripheral
  *
- * @return			- None
+ * @return		- None
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 void GPIO_DeInit(GPIO_RegDef_t *pGPIOx)
@@ -252,17 +252,17 @@ void GPIO_DeInit(GPIO_RegDef_t *pGPIOx)
  * Data read and write
  */
 /*****************************************************************
- * @fn				- GPIO_ReadFromInputPin
+ * @fn			- GPIO_ReadFromInputPin
  *
- * @brief			- This function reads value of input pin, on
- * 					  a specific port
+ * @brief		- This function reads value of input pin, on
+ * 			  a specific port
  *
  * @param[in]		- Base address of the GPIO peripheral
  * @param[in]		- Pin number
  *
- * @return			- Content of the input data
+ * @return		- Content of the input data
  *
- * @Note			- 0 or 1
+ * @Note		- 0 or 1
  *
  *****************************************************************/
 uint8_t GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
@@ -276,15 +276,15 @@ uint8_t GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
 
 
 /*****************************************************************
- * @fn				- GPIO_ReadFromInputPort
+ * @fn			- GPIO_ReadFromInputPort
  *
- * @brief			- This function reads value of input port
+ * @brief		- This function reads value of input port
  *
  * @param[in]		- Base address of the GPIO peripheral
  *
- * @return			- Content of the input data
+ * @return		- Content of the input data
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx)
@@ -298,18 +298,18 @@ uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx)
 
 
 /*****************************************************************
- * @fn				- GPIO_WriteToOutputPin
+ * @fn			- GPIO_WriteToOutputPin
  *
- * @brief			- This function writes value on a specific
- * 					  output pin
+ * @brief		- This function writes value on a specific
+ * 			  output pin
  *
  * @param[in]		- Base address of the GPIO peripheral
  * @param[in]		- Pin number
  * @param[in]		- Value (Set/Reset Macro)
  *
- * @return			- None
+ * @return		- None
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value)
@@ -328,17 +328,17 @@ void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Val
 
 
 /*****************************************************************
- * @fn				- GPIO_WriteToOutputPort
+ * @fn			- GPIO_WriteToOutputPort
  *
- * @brief			- This function writes value on a specific
- * 					  output port
+ * @brief		- This function writes value on a specific
+ * 			  output port
  *
  * @param[in]		- Base address of the GPIO peripheral
  * @param[in]		- Value (Set/Reset Macro)
  *
- * @return			- None
+ * @return		- None
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value)
@@ -348,16 +348,16 @@ void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value)
 
 
 /*****************************************************************
- * @fn				- GPIO_ToggleOutputPin
+ * @fn			- GPIO_ToggleOutputPin
  *
- * @brief			- This function toggles specific output pin
+ * @brief		- This function toggles specific output pin
  *
  * @param[in]		- Base address of the GPIO peripheral
  * @param[in]		- Pin number
  *
- * @return			- None
+ * @return		- None
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
@@ -370,16 +370,16 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
  * IRQ Configuration and ISR handling
  */
 /*****************************************************************
- * @fn				- GPIO_IRQConfig
+ * @fn			- GPIO_IRQConfig
  *
- * @brief			- This function configures interrupt
+ * @brief		- This function configures interrupt
  *
  * @param[in]		- IRQ Interrupt number
  * @param[in]		- Macro: Enable/Disable
  *
- * @return			- None
+ * @return		- None
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
@@ -424,16 +424,16 @@ void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
 
 
 /*****************************************************************
- * @fn				- GPIO_IRQPriorityConfig
+ * @fn			- GPIO_IRQPriorityConfig
  *
- * @brief			- This function configures interrupt priority
+ * @brief		- This function configures interrupt priority
  *
  * @param[in]		- IRQ Interrupt number
  * @param[in]		- IRQ interrupt priority
  *
- * @return			- None
+ * @return		- None
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
@@ -447,15 +447,15 @@ void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
 
 
 /*****************************************************************
- * @fn				- GPIO_IRQHandling
+ * @fn			- GPIO_IRQHandling
  *
- * @brief			- This function handle interrupts
+ * @brief		- This function handle interrupts
  *
  * @param[in]		- Pin number
  *
- * @return			- None
+ * @return		- None
  *
- * @Note			- None
+ * @Note		- None
  *
  *****************************************************************/
 void GPIO_IRQHandling(uint8_t PinNumber)
