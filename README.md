@@ -10,10 +10,6 @@ For this assignments [Nucleo-F446RE](https://www.st.com/en/evaluation-tools/nucl
 Src folder contains Tests, which covers every major impelmenetation (GPIO, I2C, SPI, USART, IRQ, ...)
 Inside Test folder, there are Arduino sketches which are used for communication testing.
 
-## Contributing 
-
-Pull requests are welcome. If you discover any bug/issue feel free to report it.
-
 ## Setup Installation - Linux Mint 19.3
 * ##### GCC Toolchain installation (v7.5.0)
   * `$ gcc -v     // check C compiler is installed or not` 
@@ -125,5 +121,9 @@ In `SWV ITM Data Console Settings` in section `ITM Stimulus Ports` enable port 0
 ***Note: Be sure that Core Clock is properly set!***
 
 &nbsp;
+## Contributing 
+
+Pull requests are welcome. If you discover any bug/issue feel free to report it.
+
 ## License
 [MIT](https://github.com/nemanjadjekic/stm32f446xx_drivers/blob/master/LICENSE)
