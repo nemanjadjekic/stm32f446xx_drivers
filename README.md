@@ -12,7 +12,7 @@ Inside Test folder, there are Arduino sketches which are used for communication 
 
 ## Setup Installation - Linux Mint 19.3
 * ##### GCC Toolchain installation (v7.5.0)
-  * `$ gcc -v     // check C compiler is installed or not` 
+  * `$ gcc -v     // check if C compiler is installed or not` 
    &nbsp;
    
   * Open terminal and type following command to install GCC\
