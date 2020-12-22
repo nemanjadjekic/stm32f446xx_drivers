@@ -112,30 +112,30 @@ int main(void)
 
     while(1)
     {
-		/* Wait till button is pressed */
-		while( GPIO_ReadFromInputPin(GPIOC, GPIO_PIN_NO_13) );
+        /* Wait till button is pressed */
+        while( GPIO_ReadFromInputPin(GPIOC, GPIO_PIN_NO_13) );
 
-		/* De-bouncing protection */
-		delay();
+        /* De-bouncing protection */
+        delay();
 
-		/* Next message index. Value shoudn't cross 2. */
-		cnt = cnt % 3;
+        /* Next message index. Value shoudn't cross 2. */
+        cnt = cnt % 3;
 
-		while(USART_ReceiveDataInterrupt(&USART3Handle, (uint8_t *)rx_buffer, strlen(msg[cnt])) != USART_READY);
+        while(USART_ReceiveDataInterrupt(&USART3Handle, (uint8_t *)rx_buffer, strlen(msg[cnt])) != USART_READY);
 
-    	USART_SendData(&USART3Handle, (uint8_t*)msg[cnt], strlen(msg[cnt]));
+        USART_SendData(&USART3Handle, (uint8_t*)msg[cnt], strlen(msg[cnt]));
 
-    	printf("Transmitted : %s\n", msg[cnt]);
+        printf("Transmitted : %s\n", msg[cnt]);
 
-    	while(rxCmplt != SET);
+        while(rxCmplt != SET);
 
-    	rx_buffer[strlen(msg[cnt])+ 1] = '\0';
+        rx_buffer[strlen(msg[cnt])+ 1] = '\0';
 
-    	printf("Received: %s\n", rx_buffer);
+        printf("Received: %s\n", rx_buffer);
 
-    	rxCmplt = RESET;
+        rxCmplt = RESET;
 
-    	cnt ++;
+        cnt ++;
     }
 
 	return 0;
