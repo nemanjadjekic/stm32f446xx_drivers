@@ -144,7 +144,7 @@ int main(void)
 
 void USART3_IRQHandler(void)
 {
-	USART_IRQHandling(&USART3Handle);
+    USART_IRQHandling(&USART3Handle);
 }
 
 
