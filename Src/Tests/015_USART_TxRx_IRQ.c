@@ -63,44 +63,44 @@ void USART3_GPIOInit(void)
 
 void GPIO_ButtonInit(void)
 {
-	GPIO_Handle_t GpioBtn,GpioLed;
+    GPIO_Handle_t GpioBtn,GpioLed;
 
-	/* BTN GPIO Config */
-	GpioBtn.pGPIOx = GPIOC;
-	GpioBtn.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_13;
-	GpioBtn.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_IN;
-	GpioBtn.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
-	GpioBtn.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_NO_PUPD;
+    /* BTN GPIO Config */
+    GpioBtn.pGPIOx = GPIOC;
+    GpioBtn.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_13;
+    GpioBtn.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_IN;
+    GpioBtn.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
+    GpioBtn.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_NO_PUPD;
 
-	GPIO_Init(&GpioBtn);
+    GPIO_Init(&GpioBtn);
 
-	/* LED GPIO Config */
-	GpioLed.pGPIOx = GPIOA;
-	GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
-	GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
-	GpioLed.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
-	GpioLed.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
-	GpioLed.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_NO_PUPD;
+    /* LED GPIO Config */
+    GpioLed.pGPIOx = GPIOA;
+    GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
+    GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
+    GpioLed.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
+    GpioLed.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
+    GpioLed.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_NO_PUPD;
 
-	GPIO_PeriClockControl(GPIOA, ENABLE);
+    GPIO_PeriClockControl(GPIOA, ENABLE);
 
-	GPIO_Init(&GpioLed);
+    GPIO_Init(&GpioLed);
 }
 
 
 void delay(void)
 {
-	for(uint32_t i = 0 ; i < 500000/2 ; i ++);
+    for(uint32_t i = 0 ; i < 500000/2 ; i ++);
 }
 
 
 int main(void)
 {
-	uint32_t cnt = 0;
+    uint32_t cnt = 0;
 
-	GPIO_ButtonInit();
+    GPIO_ButtonInit();
 
-	USART3_GPIOInit();
+    USART3_GPIOInit();
 
     USART3_Init();
 
@@ -150,12 +150,12 @@ void USART3_IRQHandler(void)
 
 void USART_ApplicationEventCallback( USART_Handle_t *pUSARTHandle, uint8_t AppEvent)
 {
-   if(AppEvent == USART_EVENT_RX_CMPLT)
-   {
-			rxCmplt = SET;
-
-   }else if (AppEvent == USART_EVENT_TX_CMPLT)
-   {
-	   printf("Tx Complete\n");
-   }
+    if(AppEvent == USART_EVENT_RX_CMPLT)
+    {
+        rxCmplt = SET;
+    }
+    else if (AppEvent == USART_EVENT_TX_CMPLT)
+    {
+        printf("Tx Complete\n");
+    }
 }
