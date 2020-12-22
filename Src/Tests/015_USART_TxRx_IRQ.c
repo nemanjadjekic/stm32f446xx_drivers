@@ -24,15 +24,15 @@ uint8_t g_data = 0;
 
 void USART3_Init(void)
 {
-	USART3Handle.pUSARTx = USART3;
-	USART3Handle.USART_Config.USART_Baud = USART_STD_BAUD_115200;
-	USART3Handle.USART_Config.USART_HWFlowControl = USART_HW_FLOW_CTRL_NONE;
-	USART3Handle.USART_Config.USART_Mode = USART_MODE_TXRX;
-	USART3Handle.USART_Config.USART_NoOfStopBits = USART_STOPBITS_1;
-	USART3Handle.USART_Config.USART_WordLength = USART_WORDLEN_8BITS;
-	USART3Handle.USART_Config.USART_ParityControl = USART_PARITY_DISABLE;
+    USART3Handle.pUSARTx = USART3;
+    USART3Handle.USART_Config.USART_Baud = USART_STD_BAUD_115200;
+    USART3Handle.USART_Config.USART_HWFlowControl = USART_HW_FLOW_CTRL_NONE;
+    USART3Handle.USART_Config.USART_Mode = USART_MODE_TXRX;
+    USART3Handle.USART_Config.USART_NoOfStopBits = USART_STOPBITS_1;
+    USART3Handle.USART_Config.USART_WordLength = USART_WORDLEN_8BITS;
+    USART3Handle.USART_Config.USART_ParityControl = USART_PARITY_DISABLE;
 
-	USART_Init(&USART3Handle);
+    USART_Init(&USART3Handle);
 }
 
 
@@ -42,23 +42,22 @@ void USART3_Init(void)
  */
 void USART3_GPIOInit(void)
 {
-	GPIO_Handle_t USART3Pins;
+    GPIO_Handle_t USART3Pins;
 
-	USART3Pins.pGPIOx = GPIOC;
-	USART3Pins.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_ALTFN;
-	USART3Pins.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_OD;
-	USART3Pins.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_PU;
-	USART3Pins.GPIO_PinConfig.GPIO_PinAltFunMode = 7;
-	USART3Pins.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
+    USART3Pins.pGPIOx = GPIOC;
+    USART3Pins.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_ALTFN;
+    USART3Pins.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_OD;
+    USART3Pins.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_PU;
+    USART3Pins.GPIO_PinConfig.GPIO_PinAltFunMode = 7;
+    USART3Pins.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
 
-	/* TX */
-	USART3Pins.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_10;
-	GPIO_Init(&USART3Pins);
+    /* TX */
+    USART3Pins.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_10;
+    GPIO_Init(&USART3Pins);
 
-
-	/* RX */
-	USART3Pins.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_11;
-	GPIO_Init(&USART3Pins);
+    /* RX */
+    USART3Pins.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_11;
+    GPIO_Init(&USART3Pins);
 }
 
 
