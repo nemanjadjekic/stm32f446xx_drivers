@@ -1,7 +1,0 @@
-015_USART_TxRx_IRQ.c:25:6:USART3_Init	8	static
-015_USART_TxRx_IRQ.c:43:6:USART3_GPIOInit	24	static
-015_USART_TxRx_IRQ.c:65:6:GPIO_ButtonInit	32	static
-015_USART_TxRx_IRQ.c:92:6:delay	16	static
-015_USART_TxRx_IRQ.c:98:5:main	24	static
-015_USART_TxRx_IRQ.c:146:6:USART3_IRQHandler	8	static
-015_USART_TxRx_IRQ.c:152:6:USART_ApplicationEventCallback	16	static
