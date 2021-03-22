@@ -51,11 +51,11 @@
 /*
  * ARM Cortex Mx Processor number of priority bits implemented in Priority Register
  */
-#define NO_PR_BITS_IMPLEMENTED  		4
+#define NO_PR_BITS_IMPLEMENTED  4
 
 
 /*
- * Base addresses of FLASH and  SRAM memories
+ * Base addresses of FLASH and SRAM memories
  */
 #define FLASH_BASEADDR		0x08000000U 	/* Base address of FLASH memory */
 #define SRAM1_BASEADDR		0x20000000U 	/* Base address of SRAM1 memory */
