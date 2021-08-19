@@ -1,6 +1,6 @@
 ## stm32f4xx_drivers
 
-Lab assignments from [Udemy](https://www.udemy.com/share/100F3uBkcacF1XR3o=/?xref=E0QfcF9RQH4HSWUuAAcqP1kSWSRM) course [MCU1](https://www.udemy.com/share/101rCkBkcacF1XR3o=/) by [FastBit Embedded Brain Academy](http://fastbitlab.com/). Contains source coude for all exercises done during course, tested and adjusted for [Nucleo-F446RE](https://www.st.com/en/evaluation-tools/nucleo-f446re.html) board.
+Lab assignments from [Udemy](https://www.udemy.com/share/100F3uBkcacF1XR3o=/?xref=E0QfcF9RQH4HSWUuAAcqP1kSWSRM) course [MCU1](https://www.udemy.com/course/mastering-microcontroller-with-peripheral-driver-development/) by [FastBit Embedded Brain Academy](http://fastbitlab.com/). Contains source coude for all exercises done during course, tested and adjusted for [Nucleo-F446RE](https://www.st.com/en/evaluation-tools/nucleo-f446re.html) board.
 
 
 ## Usage
