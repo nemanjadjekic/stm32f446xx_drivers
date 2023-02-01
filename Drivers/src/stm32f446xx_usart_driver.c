@@ -766,13 +766,13 @@ void USART_IRQHandling(USART_Handle_t *pUSARTHandle)
 	/* Checking status of CTS bit in the SR */
 	temp1 = pUSARTHandle->pUSARTx->SR & (1 << USART_SR_CTS);
 
-	/* Checking state of CTSE bit in CR1 */
+	/* Checking state of CTSE bit in CR3 */
 	temp2 = pUSARTHandle->pUSARTx->CR3 & (1 << USART_CR3_CTSE);
 
 	/* Checking state of CTSIE bit in CR3 (This bit is not available for UART4 & UART5.) */
 	temp3 = pUSARTHandle->pUSARTx->CR3 & (1 << USART_CR3_CTSIE);
 
-	if(temp1  && temp2)
+	if(temp1 && temp2 && temp3)
 	{
 		/* Clearing CTS flag in SR */
 		pUSARTHandle->pUSARTx->SR &= ~(1 << USART_SR_CTS);
@@ -869,7 +869,7 @@ void USART_SetBaudRate(USART_RegDef_t *pUSARTx, uint32_t BaudRate)
 	/* Hold Mantissa and Fraction values */
 	uint32_t M_part,F_part;
 
-	uint32_t tempreg=0;
+	uint32_t tempreg = 0;
 
 	/* Getting value of APB bus clock into the variable PCLKxn */
 	if(pUSARTx == USART1 || pUSARTx == USART6)
@@ -918,7 +918,7 @@ void USART_SetBaudRate(USART_RegDef_t *pUSARTx, uint32_t BaudRate)
 	/* Placing fractional part in appropriate bit position. USART_BRR */
 	tempreg |= F_part;
 
-	/* Coping value of tempreg in to BRR register */
+	/* Copying value of tempreg in to BRR register */
 	pUSARTx->BRR = tempreg;
 }
 
