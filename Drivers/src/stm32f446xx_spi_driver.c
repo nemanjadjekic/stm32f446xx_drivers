@@ -216,7 +216,7 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Length)
 	while(Length > 0)
 	{
 		/* Wait until TXE is set */
-		while(SPI_GetFlagStatus(pSPIx->SR, SPI_FLAG_TXE) == (uint8_t)FLAG_RESET);
+		while(SPI_GetFlagStatus(pSPIx, SPI_FLAG_TXE) == (uint8_t)FLAG_RESET);
 
 		if( pSPIx->CR1 & (1 << SPI_CR1_DFF) )
 		{
@@ -258,7 +258,7 @@ void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Length)
 	while(Length > 0)
 	{
 		/* Wait until RXNE is set */
-		while(SPI_GetFlagStatus(pSPIx->SR, SPI_FLAG_RXNE) == (uint8_t)FLAG_RESET);
+		while(SPI_GetFlagStatus(pSPIx, SPI_FLAG_RXNE) == (uint8_t)FLAG_RESET);
 
 		if( pSPIx->CR1 & (1 << SPI_CR1_DFF) )
 		{
