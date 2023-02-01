@@ -84,10 +84,8 @@ uint32_t RCC_GetPCLK1Value(void)
  *****************************************************************/
 uint32_t RCC_GetPCLK2Value(void)
 {
-	uint32_t pclk1, SystemClk = 0, temp, pclk2;
-
+	uint32_t SystemClk = 0, temp, pclk2;
 	uint8_t clksrc = ((RCC->CFGR >> 2) & 0x3);
-
 	uint8_t ahbp,apb2p;
 
 	if(clksrc == 0)
@@ -127,7 +125,7 @@ uint32_t RCC_GetPCLK2Value(void)
 		apb2p = APBx_Prescaler[temp-4];
 	}
 
-	pclk1 = (SystemClk / ahbp) / apb2p;
+	pclk2 = (SystemClk / ahbp) / apb2p;
 
 	return pclk2;
 }
