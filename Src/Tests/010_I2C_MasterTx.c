@@ -10,8 +10,7 @@
 #include<string.h>
 #include <stm32f446xx.h>
 
-#define MY_ADDR 0x61;
-
+#define MY_ADDR 	0x61;
 #define SLAVE_ADDR  0x68
 
 void delay(void)
@@ -94,14 +93,14 @@ int main(void)
 
 	GPIO_ButtonInit();
 
-	/* I2C Pin initialisation */
+	/* I2C Pin initialization */
 	I2C1_GPIOInits();
 
 	/* I2C Peripheral configuration */
 	I2C1_Inits();
 
 	/* Enabling I2C peripheral */
-	I2C_PeripheralControl(I2C1,ENABLE);
+	I2C_PeripheralControl(I2C1, ENABLE);
 
 	while(1)
 	{
