@@ -12,12 +12,12 @@
 
 
 /* Application configurable items */
-#define DS1307_I2C				I2C1
-#define DS1307_I2C_GPIO_PORT	GPIOB
-#define DS1307_I2C_SDA_PIN		GPIO_PIN_NO_7 //TODO: Check for F4460
-#define DS1307_I2C_SCL_PIN		GPIO_PIN_NO_6
-#define DS1307_I2C_SPEED		I2C_SCL_SPEED_SM
-#define DS1307_I2C_PUPD			GPIO_PIN_PU //TODO: Try with internal pull up first
+#define DS1307_I2C              I2C1
+#define DS1307_I2C_GPIO_PORT    GPIOB
+#define DS1307_I2C_SDA_PIN      GPIO_PIN_NO_7
+#define DS1307_I2C_SCL_PIN      GPIO_PIN_NO_6
+#define DS1307_I2C_SPEED        I2C_SCL_SPEED_SM
+#define DS1307_I2C_PUPD         GPIO_PIN_PU
 
 
 /* Register addresses */
@@ -29,9 +29,9 @@
 #define DS1307_ADDR_MONTH		0x05
 #define DS1307_ADDR_YEAR		0x06
 
-#define TIME_FORMAT_12HRS_AM	0
-#define TIME_FORMAT_12HRS_PM	1
-#define TIME_FORMAT_24HRS		2
+#define TIME_FORMAT_12HRS_AM    0
+#define TIME_FORMAT_12HRS_PM    1
+#define TIME_FORMAT_24HRS       2
 
 #define DS1307_I2C_ADDRESS		0x68
 
