@@ -52,8 +52,6 @@ void I2C1_GPIOInits(void)
     /* SDA */
     I2CPins.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_7;
     GPIO_Init(&I2CPins);
-
-
 }
 
 void I2C1_Inits(void)
@@ -156,9 +154,7 @@ int main(void)
         printf("Data : %s",rcv_buf);
 
         rxComplt = RESET;
-
     }
-
 }
 
 
@@ -180,11 +176,13 @@ void I2C_ApplicationEventCallback(I2C_Handle_t *pI2CHandle,uint8_t AppEv)
     if(AppEv == I2C_EV_TX_CMPLT)
     {
         printf("Tx is completed\n");
-    }else if (AppEv == I2C_EV_RX_CMPLT)
+    }
+    else if (AppEv == I2C_EV_RX_CMPLT)
     {
         printf("Rx is completed\n");
         rxComplt = SET;
-    }else if (AppEv == I2C_ERROR_AF)
+    }
+    else if (AppEv == I2C_ERROR_AF)
     {
         printf("Error : Ack failure\n");
         /* Master ACK failure happens when slave fails to send ACK

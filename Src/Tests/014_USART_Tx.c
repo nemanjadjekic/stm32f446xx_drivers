@@ -48,7 +48,6 @@ void USART3_GPIOInit(void)
     USART3Pins.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_10;
     GPIO_Init(&USART3Pins);
 
-
     /* RX */
     USART3Pins.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_11;
     GPIO_Init(&USART3Pins);

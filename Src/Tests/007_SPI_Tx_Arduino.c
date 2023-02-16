@@ -107,7 +107,6 @@ int main(void)
 
     while(1)
     {
-
         /* Enable SPI2 peripheral */
         SPI_PeripheralControl(SPI2, ENABLE);
 

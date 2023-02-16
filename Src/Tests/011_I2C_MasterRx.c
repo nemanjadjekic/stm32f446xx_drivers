@@ -136,5 +136,4 @@ int main(void)
 
         printf("Data : %s",rcv_buf);
     }
-
 }

@@ -74,7 +74,6 @@ void SPI2_GPIOInits(void)
     /* NSS Init */
     SPIPins.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_12;
     GPIO_Init(&SPIPins);
-
 }
 
 
