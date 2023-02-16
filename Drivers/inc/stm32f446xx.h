@@ -19,14 +19,14 @@
 /*
  * ARM Cortex Mx Processor NVIC ISERx Register Addresses
  */
-#define NVIC_ISER0      	( (__vo uint32_t*)0xE000E100 )
-#define NVIC_ISER1      	( (__vo uint32_t*)0xE000E104 )
-#define NVIC_ISER2      	( (__vo uint32_t*)0xE000E108 )
-#define NVIC_ISER3      	( (__vo uint32_t*)0xE000E10C )
-#define NVIC_ISER4      	( (__vo uint32_t*)0xE000E110 )
-#define NVIC_ISER5      	( (__vo uint32_t*)0xE000E114 )
-#define NVIC_ISER6      	( (__vo uint32_t*)0xE000E118 )
-#define NVIC_ISER7      	( (__vo uint32_t*)0xE000E11C )
+#define NVIC_ISER0      ( (__vo uint32_t*)0xE000E100 )
+#define NVIC_ISER1      ( (__vo uint32_t*)0xE000E104 )
+#define NVIC_ISER2      ( (__vo uint32_t*)0xE000E108 )
+#define NVIC_ISER3      ( (__vo uint32_t*)0xE000E10C )
+#define NVIC_ISER4      ( (__vo uint32_t*)0xE000E110 )
+#define NVIC_ISER5      ( (__vo uint32_t*)0xE000E114 )
+#define NVIC_ISER6      ( (__vo uint32_t*)0xE000E118 )
+#define NVIC_ISER7      ( (__vo uint32_t*)0xE000E11C )
 
 
 /*
@@ -51,17 +51,17 @@
 /*
  * ARM Cortex Mx Processor number of priority bits implemented in Priority Register
  */
-#define NO_PR_BITS_IMPLEMENTED      4
+#define NO_PR_BITS_IMPLEMENTED  4
 
 
 /*
  * Base addresses of FLASH and SRAM memories
  */
-#define FLASH_BASEADDR		0x08000000U 	/* Base address of FLASH memory */
-#define SRAM1_BASEADDR		0x20000000U 	/* Base address of SRAM1 memory */
-#define SRAM2_BASEADDR		0x2001C000U 	/* Base address of SRAM2 memory */
-#define ROM_BASEADDR		0x1FFF0000U 	/* Base address of ROM memory 	*/
-#define SRAM_BASEADDR 		SRAM1_BASEADDR  /* Base address of SRAM memory 	*/
+#define FLASH_BASEADDR      0x08000000U     /* Base address of FLASH memory */
+#define SRAM1_BASEADDR      0x20000000U     /* Base address of SRAM1 memory */
+#define SRAM2_BASEADDR      0x2001C000U     /* Base address of SRAM2 memory */
+#define ROM_BASEADDR        0x1FFF0000U     /* Base address of ROM memory 	*/
+#define SRAM_BASEADDR       SRAM1_BASEADDR  /* Base address of SRAM memory 	*/
 
 
 /*
@@ -77,44 +77,44 @@
 /*
  * Base addresses of peripherals which are hanging on AHB1 bus
  */
-#define GPIOA_BASEADDR		(AHB1PERIPH_BASEADDR + 0x0000) /* GPIOA base address                    */
-#define GPIOB_BASEADDR		(AHB1PERIPH_BASEADDR + 0x0400) /* GPIOB base address                    */
-#define GPIOC_BASEADDR		(AHB1PERIPH_BASEADDR + 0x0800) /* GPIOC base address                    */
-#define GPIOD_BASEADDR		(AHB1PERIPH_BASEADDR + 0x0C00) /* GPIOD base address                    */
-#define GPIOE_BASEADDR		(AHB1PERIPH_BASEADDR + 0x1000) /* GPIOE base address                    */
-#define GPIOF_BASEADDR		(AHB1PERIPH_BASEADDR + 0x1400) /* GPIOF base address                    */
-#define GPIOG_BASEADDR		(AHB1PERIPH_BASEADDR + 0x1800) /* GPIOG base address                    */
-#define GPIOH_BASEADDR		(AHB1PERIPH_BASEADDR + 0x1C00) /* GPIOH base address                    */
-#define RCC_BASEADDR		(AHB1PERIPH_BASEADDR + 0x3800) /* RCC base address                      */
-#define CRC_BASEADDR		(AHB1PERIPH_BASEADDR + 0x3000) /* CRC base address                      */
-#define FIR_BASEADDR		(AHB1PERIPH_BASEADDR + 0x3C00) /* Flash interface register base address	*/
-#define DMA1_BASEADDR		(AHB1PERIPH_BASEADDR + 0x6000) /* DMA1 base address                     */
-#define DMA2_BASEADDR		(AHB1PERIPH_BASEADDR + 0x6400) /* DMA2 base address                     */
+#define GPIOA_BASEADDR      (AHB1PERIPH_BASEADDR + 0x0000) /* GPIOA base address                    */
+#define GPIOB_BASEADDR      (AHB1PERIPH_BASEADDR + 0x0400) /* GPIOB base address                    */
+#define GPIOC_BASEADDR      (AHB1PERIPH_BASEADDR + 0x0800) /* GPIOC base address                    */
+#define GPIOD_BASEADDR      (AHB1PERIPH_BASEADDR + 0x0C00) /* GPIOD base address                    */
+#define GPIOE_BASEADDR      (AHB1PERIPH_BASEADDR + 0x1000) /* GPIOE base address                    */
+#define GPIOF_BASEADDR      (AHB1PERIPH_BASEADDR + 0x1400) /* GPIOF base address                    */
+#define GPIOG_BASEADDR      (AHB1PERIPH_BASEADDR + 0x1800) /* GPIOG base address                    */
+#define GPIOH_BASEADDR      (AHB1PERIPH_BASEADDR + 0x1C00) /* GPIOH base address                    */
+#define RCC_BASEADDR        (AHB1PERIPH_BASEADDR + 0x3800) /* RCC base address                      */
+#define CRC_BASEADDR        (AHB1PERIPH_BASEADDR + 0x3000) /* CRC base address                      */
+#define FIR_BASEADDR        (AHB1PERIPH_BASEADDR + 0x3C00) /* Flash interface register base address	*/
+#define DMA1_BASEADDR       (AHB1PERIPH_BASEADDR + 0x6000) /* DMA1 base address                     */
+#define DMA2_BASEADDR       (AHB1PERIPH_BASEADDR + 0x6400) /* DMA2 base address                     */
 
 
 /*
  * Base addresses of peripherals which are hanging on APB1 bus
  */
-#define I2C1_BASEADDR		(APB1PERIPH_BASEADDR + 0x5400) /* I2C1 base address   */
-#define I2C2_BASEADDR		(APB1PERIPH_BASEADDR + 0x5800) /* I2C2 base address   */
-#define I2C3_BASEADDR		(APB1PERIPH_BASEADDR + 0x5C00) /* I2C3 base address   */
-#define SPI2_BASEADDR		(APB1PERIPH_BASEADDR + 0x3800) /* SPI2 base address   */
-#define SPI3_BASEADDR		(APB1PERIPH_BASEADDR + 0x3C00) /* SPI3 base address   */
-#define USART2_BASEADDR		(APB1PERIPH_BASEADDR + 0x4400) /* USART2 base address */
-#define USART3_BASEADDR		(APB1PERIPH_BASEADDR + 0x4800) /* USART3 base address */
-#define UART4_BASEADDR		(APB1PERIPH_BASEADDR + 0x4C00) /* UART4 base address  */
-#define UART5_BASEADDR		(APB1PERIPH_BASEADDR + 0x5000) /* UART5 base address  */
+#define I2C1_BASEADDR       (APB1PERIPH_BASEADDR + 0x5400) /* I2C1 base address   */
+#define I2C2_BASEADDR       (APB1PERIPH_BASEADDR + 0x5800) /* I2C2 base address   */
+#define I2C3_BASEADDR       (APB1PERIPH_BASEADDR + 0x5C00) /* I2C3 base address   */
+#define SPI2_BASEADDR       (APB1PERIPH_BASEADDR + 0x3800) /* SPI2 base address   */
+#define SPI3_BASEADDR       (APB1PERIPH_BASEADDR + 0x3C00) /* SPI3 base address   */
+#define USART2_BASEADDR     (APB1PERIPH_BASEADDR + 0x4400) /* USART2 base address */
+#define USART3_BASEADDR     (APB1PERIPH_BASEADDR + 0x4800) /* USART3 base address */
+#define UART4_BASEADDR      (APB1PERIPH_BASEADDR + 0x4C00) /* UART4 base address  */
+#define UART5_BASEADDR      (APB1PERIPH_BASEADDR + 0x5000) /* UART5 base address  */
 
 
 /*
  * Base addresses of peripherals which are hanging on APB2 bus
  */
-#define SPI1_BASEADDR		(APB2PERIPH_BASEADDR + 0x3000) /* SPI1 base address   */
-#define SPI4_BASEADDR		(APB2PERIPH_BASEADDR + 0x3400) /* SPI4 base address   */
-#define USART1_BASEADDR		(APB2PERIPH_BASEADDR + 0x1000) /* USART1 base address */
-#define USART6_BASEADDR		(APB2PERIPH_BASEADDR + 0x1400) /* USART6 base address */
-#define SYSCFG_BASEADDR		(APB2PERIPH_BASEADDR + 0x3800) /* SYSCFG base address */
-#define EXTI_BASEADDR		(APB2PERIPH_BASEADDR + 0x3C00) /* EXTI base address   */
+#define SPI1_BASEADDR       (APB2PERIPH_BASEADDR + 0x3000) /* SPI1 base address   */
+#define SPI4_BASEADDR       (APB2PERIPH_BASEADDR + 0x3400) /* SPI4 base address   */
+#define USART1_BASEADDR     (APB2PERIPH_BASEADDR + 0x1000) /* USART1 base address */
+#define USART6_BASEADDR     (APB2PERIPH_BASEADDR + 0x1400) /* USART6 base address */
+#define SYSCFG_BASEADDR     (APB2PERIPH_BASEADDR + 0x3800) /* SYSCFG base address */
+#define EXTI_BASEADDR       (APB2PERIPH_BASEADDR + 0x3C00) /* EXTI base address   */
 
 
 /**********************************************************************************************
@@ -128,7 +128,7 @@ typedef struct
     __vo uint32_t MODER;        /* GPIO port mode register,                         Address offset: 0x00    */
     __vo uint32_t OTYPER;       /* GPIO port output type register,                  Address offset: 0x04    */
     __vo uint32_t OSPEEDR;      /* GPIO port output speed register,                 Address offset: 0x08    */
-    __vo uint32_t PUPDR; 		/* GPIO port pull-up/down register,                 Address offset: 0x0C    */
+    __vo uint32_t PUPDR;        /* GPIO port pull-up/down register,                 Address offset: 0x0C    */
     __vo uint32_t IDR;          /* GPIO port input data register,                   Address offset: 0x10    */
     __vo uint32_t ODR;          /* GPIO port output data register,                  Address offset: 0x14    */
     __vo uint32_t BSRR;         /* GPIO port bit set/reset register,                Address offset: 0x18    */
