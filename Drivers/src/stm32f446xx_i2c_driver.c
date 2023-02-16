@@ -76,9 +76,9 @@ void I2C_PeriClockControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
  *
  * @param[in]   - Pointer to I2C Handle structure
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void I2C_Init(I2C_Handle_t *pI2CHandle)
@@ -860,15 +860,15 @@ void I2C_CloseReceiveData(I2C_Handle_t *pI2CHandle)
 
 
 /*****************************************************************
- * @fn			- I2C_CloseSendData
+ * @fn          - I2C_CloseSendData
  *
- * @brief		- Closing I2C communication when data is sent
+ * @brief       - Closing I2C communication when data is sent
  *
  * @param[in]   - Pointer to I2C Handle structure
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- Disabling all interrupts
+ * @Note        - Disabling all interrupts
  *
  *****************************************************************/
 void I2C_CloseSendData(I2C_Handle_t *pI2CHandle)
@@ -887,15 +887,15 @@ void I2C_CloseSendData(I2C_Handle_t *pI2CHandle)
 
 
 /*****************************************************************
- * @fn			- I2C_GenerateStopCondition
+ * @fn          - I2C_GenerateStopCondition
  *
- * @brief		- Generate stop condition for I2C
+ * @brief       - Generate stop condition for I2C
  *
  * @param[in]   - Base address of the I2C peripheral
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
@@ -905,15 +905,15 @@ void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
 
 
 /*****************************************************************
- * @fn			- I2C_SlaveEnableDisableCallbackEvents
+ * @fn          - I2C_SlaveEnableDisableCallbackEvents
  *
- * @brief		- Generate stop condition for I2C
+ * @brief       - Generate stop condition for I2C
  *
  * @param[in]   - Base address of the I2C peripheral
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void I2C_SlaveEnableDisableCallbackEvents(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
@@ -937,15 +937,15 @@ void I2C_SlaveEnableDisableCallbackEvents(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
  *               Helper functions implementation                 *
  *****************************************************************/
 /*****************************************************************
- * @fn			- I2C_GenerateStartCondition
+ * @fn          - I2C_GenerateStartCondition
  *
- * @brief		- Generate start condition for I2C
+ * @brief       - Generate start condition for I2C
  *
  * @param[in]   - Base address of the I2C peripheral
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 static void I2C_GenerateStartCondition(I2C_RegDef_t *pI2Cx)
@@ -955,17 +955,17 @@ static void I2C_GenerateStartCondition(I2C_RegDef_t *pI2Cx)
 
 
 /*****************************************************************
- * @fn			- I2C_ExecuteAddressPhaseWrite
+ * @fn          - I2C_ExecuteAddressPhaseWrite
  *
- * @brief		- Send the address of the slave with r/nm
- * 			      bit set to r/nw(0) (total 8 bits)
+ * @brief       - Send the address of the slave with r/nm
+ *                bit set to r/nw(0) (total 8 bits)
  *
  * @param[in]   - Base address of the I2C peripheral
  * @param[in]   - Slave address
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 static void I2C_ExecuteAddressPhaseWrite(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr)
@@ -978,17 +978,17 @@ static void I2C_ExecuteAddressPhaseWrite(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr)
 
 
 /*****************************************************************
- * @fn			- I2C_ExecuteAddressPhaseRead
+ * @fn          - I2C_ExecuteAddressPhaseRead
  *
- * @brief		- Send the address of the slave with r/nm
+ * @brief       - Send the address of the slave with r/nm
  *                bit set to r/nw(1) (total 8 bits)
  *
  * @param[in]   - Base address of the I2C peripheral
  * @param[in]   - Slave address
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 static void I2C_ExecuteAddressPhaseRead(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr)
@@ -1001,15 +1001,15 @@ static void I2C_ExecuteAddressPhaseRead(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr)
 
 
 /*****************************************************************
- * @fn			- I2C_ClearAddrFlag
+ * @fn          - I2C_ClearAddrFlag
  *
- * @brief		- Clear address flag
+ * @brief       - Clear address flag
  *
  * @param[in]   - Base address of the I2C peripheral
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 static void I2C_ClearAddrFlag(I2C_Handle_t *pI2CHandle)
@@ -1053,15 +1053,15 @@ static void I2C_ClearAddrFlag(I2C_Handle_t *pI2CHandle)
 
 
 /*****************************************************************
- * @fn			- I2C_MasterHandleTXEInterrupt
+ * @fn          - I2C_MasterHandleTXEInterrupt
  *
- * @brief		- Interrupt handling master TXE mode
+ * @brief       - Interrupt handling master TXE mode
  *
  * @param[in]   - Pointer to I2C Handle structure
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
@@ -1079,7 +1079,6 @@ static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
 
             /* Increment Tx buffer address */
             pI2CHandle->pTxBuffer++;
-
         }
     }
     /* DBG->Check comments */
@@ -1087,15 +1086,15 @@ static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
 
 
 /*****************************************************************
- * @fn			- I2C_MasterHandleRXNEInterrupts
+ * @fn          - I2C_MasterHandleRXNEInterrupts
  *
- * @brief		- Interrupt handling master RXNE mode
+ * @brief       - Interrupt handling master RXNE mode
  *
  * @param[in]   - Pointer to I2C Handle structure
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 static void I2C_MasterHandleRXNEInterrupt(I2C_Handle_t *pI2CHandle)
