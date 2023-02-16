@@ -134,7 +134,7 @@ typedef struct
     __vo uint32_t BSRR;         /* GPIO port bit set/reset register,                Address offset: 0x18    */
     __vo uint32_t LCKR;         /* GPIO port configuration lock register,           Address offset: 0x1C    */
     __vo uint32_t AFR[2];       /* AFR[0]: GPIO alternate function low register,
-                                   AFR[1]: GPIO alternate function high register,	Address offset: 0x20-24 */
+                                   AFR[1]: GPIO alternate function high register,   Address offset: 0x20-24 */
 }GPIO_RegDef_t;
 
 
