@@ -10,7 +10,7 @@
 
 #define SYSTICK_TIMER_CLK   1600000UL
 
-// Helper functions
+/* Helper functions */
 char* GetDayOfWeek(uint8_t i);
 void NumberToString(uint8_t num, char *buf);
 char* TimeToString(RTC_Time_t *RTC_Time);
@@ -18,8 +18,8 @@ char* DateToString(RTC_Date_t *RTC_Date);
 void InitSystickTimer(uint32_t tick_hz);
 
 
-int main(){
-
+int main()
+{
     RTC_Time_t current_time;
     RTC_Date_t current_date;
 
@@ -66,7 +66,7 @@ int main(){
     return 0;
 }
 
-// Helper functions
+/* Helper functions */
 char* GetDayOfWeek(uint8_t i)
 {
     char* days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
