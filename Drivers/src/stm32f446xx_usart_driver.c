@@ -11,17 +11,17 @@
  * Peripheral Clock setup
  */
 /*****************************************************************
- * @fn			- USART_PeriClockControl
+ * @fn          - USART_PeriClockControl
  *
- * @brief		- This function enables or disables peripheral
+ * @brief       - This function enables or disables peripheral
  *                clock for the given U(S)ART port
  *
  * @param[in]   - Base address of the U(S)ART peripheral
  * @param[in]   - Macros: Enable or Disable
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void USART_PeriClockControl(USART_RegDef_t *pUSARTx, uint8_t EnorDi)
@@ -84,16 +84,16 @@ void USART_PeriClockControl(USART_RegDef_t *pUSARTx, uint8_t EnorDi)
 
 
 /*****************************************************************
- * @fn			- USART_PeripheralControl
+ * @fn          - USART_PeripheralControl
  *
- * @brief		- This function sets U(S)ART peripheral control
+ * @brief       - This function sets U(S)ART peripheral control
  *
  * @param[in]   - Base address of the U(S)ART peripheral
  * @param[in]   - Enable or Disable command
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void USART_PeripheralControl(USART_RegDef_t *pUSARTx, uint8_t EnorDi)
@@ -113,15 +113,15 @@ void USART_PeripheralControl(USART_RegDef_t *pUSARTx, uint8_t EnorDi)
  * Init and De-Init
  */
 /*****************************************************************
- * @fn			- USART_Init
+ * @fn          - USART_Init
  *
- * @brief		- This function initialize USART peripherals
+ * @brief       - This function initialize USART peripherals
  *
  * @param[in]   - Pointer to USART Handle structure
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void USART_Init(USART_Handle_t *pUSARTHandle)
@@ -205,21 +205,21 @@ void USART_Init(USART_Handle_t *pUSARTHandle)
 
     pUSARTHandle->pUSARTx->CR3 = tempreg;
 
-    /* Configuring Baudrate */
+    /* Configuring baud rate */
     USART_SetBaudRate(pUSARTHandle->pUSARTx, pUSARTHandle->USART_Config.USART_Baud);
 }
 
 
 /*****************************************************************
- * @fn			- USART_DeInit
+ * @fn          - USART_DeInit
  *
- * @brief		- This function de-initialize U(S)ART peripherals
+ * @brief       - This function de-initialize U(S)ART peripherals
  *
  * @param[in]   - Base address of the U(S)ART peripheral
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void USART_DeInit(USART_RegDef_t *pUSARTx)
@@ -252,17 +252,17 @@ void USART_DeInit(USART_RegDef_t *pUSARTx)
 
 
 /*****************************************************************
- * @fn			- USART_GetFlagStatus
+ * @fn          - USART_GetFlagStatus
  *
- * @brief		- This function returns if bit in register is
+ * @brief       - This function returns if bit in register is
  *                set or not
  *
  * @param[in]   - Base address of the U(S)ART peripheral
  * @param[in]   - Name of flag
  *
- * @return		- Flag status (True/False)
+ * @return      - Flag status (True/False)
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 uint8_t USART_GetFlagStatus(USART_RegDef_t *pUSARTx , uint32_t FlagName)
@@ -276,16 +276,16 @@ uint8_t USART_GetFlagStatus(USART_RegDef_t *pUSARTx , uint32_t FlagName)
 
 
 /*****************************************************************
- * @fn			- USART_ClearFlag
+ * @fn          - USART_ClearFlag
  *
- * @brief		- This function clears status flag
+ * @brief       - This function clears status flag
  *
  * @param[in]   - Base address of the U(S)ART peripheral
  * @param[in]   - Name of flag
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void USART_ClearFlag(USART_RegDef_t *pUSARTx, uint16_t FlagName)
@@ -501,16 +501,16 @@ uint8_t USART_ReceiveDataInterrupt(USART_Handle_t *pUSARTHandle, uint8_t *pRxBuf
  * IRQ Configuration and ISR handling
  */
 /*****************************************************************
- * @fn			- USART_IRQInterruptConfig
+ * @fn          - USART_IRQInterruptConfig
  *
- * @brief		- This function configures interrupt
+ * @brief       - This function configures interrupt
  *
  * @param[in]   - IRQ Interrupt number
  * @param[in]   - Macro: Enable/Disable
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void USART_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
@@ -555,16 +555,16 @@ void USART_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
 
 
 /*****************************************************************
- * @fn			- USART_IRQPriorityConfig
+ * @fn          - USART_IRQPriorityConfig
  *
- * @brief		- This function configures interrupt priority
+ * @brief       - This function configures interrupt priority
  *
- * @param[in]	- IRQ Interrupt number
- * @param[in]	- IRQ interrupt priority
+ * @param[in]   - IRQ Interrupt number
+ * @param[in]   - IRQ interrupt priority
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void USART_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
@@ -578,15 +578,15 @@ void USART_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
 
 
 /*****************************************************************
- * @fn			- USART_IRQHandling
+ * @fn          - USART_IRQHandling
  *
- * @brief		- Interrupt handling for diff. U(S)ART events
+ * @brief       - Interrupt handling for diff. U(S)ART events
  *
- * @param[in]	- Pointer to U(S)ART Handle structure
+ * @param[in]   - Pointer to U(S)ART Handle structure
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void USART_IRQHandling(USART_Handle_t *pUSARTHandle)
@@ -931,9 +931,9 @@ void USART_SetBaudRate(USART_RegDef_t *pUSARTx, uint32_t BaudRate)
  * @param[in]   - Handle structure
  * @param[in]   - Application event
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 __weak void USART_ApplicationEventCallback(USART_Handle_t *pUSARTHandle, uint8_t AppEvent)
