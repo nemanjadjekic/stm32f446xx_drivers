@@ -10,9 +10,9 @@
 /*
  * Helper functions
  */
-static void spi_txe_interrupt_handle(SPI_Handle_t *pSPIHandle);
-static void spi_rxne_interrupt_handle(SPI_Handle_t *pSPIHandle);
-static void spi_ovr_err_interrupt_handle(SPI_Handle_t *pSPIHandle);
+static void SPI_TXE_InterruptHandle(SPI_Handle_t *pSPIHandle);
+static void SPI_RXNE_InterruptHandle(SPI_Handle_t *pSPIHandle);
+static void SPI_OVR_ErrInterruptHandle(SPI_Handle_t *pSPIHandle);
 
 
 /*
@@ -22,10 +22,10 @@ static void spi_ovr_err_interrupt_handle(SPI_Handle_t *pSPIHandle);
  * @fn			- SPI_PeriClockControl
  *
  * @brief		- This function enables or disables peripheral
- * 			  clock for the given SPI port
+ * 			      clock for the given SPI port
  *
- * @param[in]		- Base address of the SPI peripheral
- * @param[in]		- Macros: Enable or Disable
+ * @param[in]   - Base address of the SPI peripheral
+ * @param[in]   - Macros: Enable or Disable
  *
  * @return		- None
  *
@@ -143,7 +143,7 @@ void SPI_Init(SPI_Handle_t *pSPIHandle)
  *
  * @brief		- This function de-initialize SPI peripherals
  *
- * @param[in]		- Base address of the SPI peripheral
+ * @param[in]   - Base address of the SPI peripheral
  *
  * @return		- None
  *
@@ -175,10 +175,10 @@ void SPI_DeInit(SPI_RegDef_t *pSPIx)
  * @fn			- SPI_GetFlagStatus
  *
  * @brief		- This function returns if bit in register is
- * 			  set or not
+ * 			      set or not
  *
- * @param[in]		- Base address of the SPI peripheral
- * @param[in]		- Name of flag
+ * @param[in]	- Base address of the SPI peripheral
+ * @param[in]	- Name of flag
  *
  * @return		- Flag status (True/False)
  *
@@ -202,9 +202,9 @@ uint8_t SPI_GetFlagStatus(SPI_RegDef_t *pSPIx, uint32_t FlagName)
  *
  * @brief		- This function sends data over SPI peripheral
  *
- * @param[in]		- Base address of the SPI peripheral
- * @param[in]		- Transmit buffer
- * @param[in]		- Length of transmit buffer
+ * @param[in]	- Base address of the SPI peripheral
+ * @param[in]	- Transmit buffer
+ * @param[in]	- Length of transmit buffer
  *
  * @return		- None
  *
@@ -242,11 +242,11 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Length)
  * @fn			- SPI_ReceivedData
  *
  * @brief		- This function receives data over SPI
- * 			  peripheral
+ *                peripheral
  *
- * @param[in]		- Base address of the SPI peripheral
- * @param[in]		- Transmit buffer
- * @param[in]		- Length of transmit buffer
+ * @param[in]   - Base address of the SPI peripheral
+ * @param[in]   - Transmit buffer
+ * @param[in]   - Length of transmit buffer
  *
  * @return		- None
  *
@@ -284,15 +284,15 @@ void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Length)
  * @fn			- SPI_SendDataInterruptMode
  *
  * @brief		- This function sends data over SPI
- * 			  peripheral in Interrupt mode
+ *                peripheral in Interrupt mode
  *
- * @param[in]		- Pointer to SPI Handle structure
- * @param[in]		- Transmit buffer
- * @param[in]		- Length of transmit buffer
+ * @param[in]   - Pointer to SPI Handle structure
+ * @param[in]   - Transmit buffer
+ * @param[in]   - Length of transmit buffer
  *
- * @return		- Tx State
+ * @return      - Tx State
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 uint8_t SPI_SendDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, uint32_t Length)
@@ -320,15 +320,15 @@ uint8_t SPI_SendDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pTxBuffer, 
  * @fn			- SPI_ReceiveDataInterruptMode
  *
  * @brief		- This function receives data over SPI
- * 			  peripheral in Interrupt mode
+ *                peripheral in Interrupt mode
  *
- * @param[in]		- Pointer to SPI Handle structure
- * @param[in]		- Transmit buffer
- * @param[in]		- Length of transmit buffer
+ * @param[in]   - Pointer to SPI Handle structure
+ * @param[in]   - Transmit buffer
+ * @param[in]   - Length of transmit buffer
  *
- * @return		- Rx State
+ * @return      - Rx State
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 uint8_t SPI_ReceiveDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffer, uint32_t Length)
@@ -360,8 +360,8 @@ uint8_t SPI_ReceiveDataInterruptMode(SPI_Handle_t *pSPIHandle, uint8_t *pRxBuffe
  *
  * @brief		- This function configures interrupt
  *
- * @param[in]		- IRQ Interrupt number
- * @param[in]		- Macro: Enable/Disable
+ * @param[in]   - IRQ Interrupt number
+ * @param[in]   - Macro: Enable/Disable
  *
  * @return		- None
  *
@@ -414,8 +414,8 @@ void SPI_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
  *
  * @brief		- This function configures interrupt priority
  *
- * @param[in]		- IRQ Interrupt number
- * @param[in]		- IRQ interrupt priority
+ * @param[in]   - IRQ Interrupt number
+ * @param[in]   - IRQ interrupt priority
  *
  * @return		- None
  *
@@ -437,7 +437,7 @@ void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
  *
  * @brief		- This function handle interrupts
  *
- * @param[in]		- Handle structure
+ * @param[in]   - Handle structure
  *
  * @return		- None
  *
@@ -456,7 +456,7 @@ void SPI_IRQHandling(SPI_Handle_t *pHandle)
 	if(temp1 && temp2)
 	{
 		/* Handle TXE */
-		spi_txe_interrupt_handle(pHandle);
+		SPI_TXE_InterruptHandle(pHandle);
 	}
 
 	/* Check for RXNE */
@@ -466,7 +466,7 @@ void SPI_IRQHandling(SPI_Handle_t *pHandle)
 	if(temp1 && temp2)
 	{
 		/* Handle RXNE */
-		spi_rxne_interrupt_handle(pHandle);
+		SPI_RXNE_InterruptHandle(pHandle);
 	}
 
 	/* Check for OVR flag */
@@ -476,7 +476,7 @@ void SPI_IRQHandling(SPI_Handle_t *pHandle)
 	if(temp1 && temp2)
 	{
 		/* Handle OVR Error */
-		spi_ovr_err_interrupt_handle(pHandle);
+		SPI_OVR_ErrInterruptHandle(pHandle);
 	}
 
 }
@@ -487,8 +487,8 @@ void SPI_IRQHandling(SPI_Handle_t *pHandle)
  *
  * @brief		- This function sets SPI peripheral control
  *
- * @param[in]		- Base address of the SPI peripheral
- * @param[in]		- Enable or Disable command
+ * @param[in]   - Base address of the SPI peripheral
+ * @param[in]   - Enable or Disable command
  *
  * @return		- None
  *
@@ -513,8 +513,8 @@ void SPI_PeripheralControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
  *
  * @brief		- This function sets SSI register
  *
- * @param[in]		- Base address of the SPI peripheral
- * @param[in]		- Enable or Disable command
+ * @param[in]   - Base address of the SPI peripheral
+ * @param[in]   - Enable or Disable command
  *
  * @return		- None
  *
@@ -539,8 +539,8 @@ void SPI_SSIConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
  *
  * @brief		- This function sets SSEO register
  *
- * @param[in]		- Base address of the SPI peripheral
- * @param[in]		- Enable or Disable command
+ * @param[in]   - Base address of the SPI peripheral
+ * @param[in]   - Enable or Disable command
  *
  * @return		- None
  *
@@ -565,7 +565,7 @@ void SPI_SSOEConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
  *
  * @brief		- This function close SPI transmission
  *
- * @param[in]		- Handle structure
+ * @param[in]   - Handle structure
  *
  * @return		- None
  *
@@ -586,7 +586,7 @@ void SPI_CloseTransmission(SPI_Handle_t *pSPIHandle)
  *
  * @brief		- This function close SPI reception
  *
- * @param[in]		- Handle structure
+ * @param[in]   - Handle structure
  *
  * @return		- None
  *
@@ -607,7 +607,7 @@ void SPI_CloseReception(SPI_Handle_t *pSPIHandle)
  *
  * @brief		- This function clears OVR flag
  *
- * @param[in]		- Base address of the SPI peripheral
+ * @param[in]   - Base address of the SPI peripheral
  *
  * @return		- None
  *
@@ -631,8 +631,8 @@ void SPI_ClearOVRFlag(SPI_RegDef_t *pSPIx)
  *
  * @brief		- Application event callback function
  *
- * @param[in]		- Handle structure
- * @param[in]		- Application event
+ * @param[in]   - Handle structure
+ * @param[in]   - Application event
  *
  * @return		- None
  *
@@ -646,18 +646,18 @@ __weak void SPI_ApplicationEventCallback(SPI_Handle_t *pSPIHandle, uint8_t AppEv
 
 
 /*****************************************************************
- * @fn			- spi_txe_interrupt_handle
+ * @fn			- SPI_TXE_InterruptHandle
  *
  * @brief		- This function handles TXE in interrupt mode
  *
- * @param[in]		- Pointer to SPI Handle structure
+ * @param[in]   - Pointer to SPI Handle structure
  *
  * @return		- None
  *
  * @Note		- None
  *
  *****************************************************************/
-static void spi_txe_interrupt_handle(SPI_Handle_t *pSPIHandle)
+static void SPI_TXE_InterruptHandle(SPI_Handle_t *pSPIHandle)
 {
 	if( pSPIHandle->pSPIx->CR1 & (1 << SPI_CR1_DFF) )
 	{
@@ -687,18 +687,18 @@ static void spi_txe_interrupt_handle(SPI_Handle_t *pSPIHandle)
 
 
 /*****************************************************************
- * @fn			- spi_rxne_interrupt_handle
+ * @fn			- SPI_RXNE_InterruptHandle
  *
  * @brief		- This function handles RXNE in interrupt mode
  *
- * @param[in]		- Pointer to SPI Handle structure
+ * @param[in]   - Pointer to SPI Handle structure
  *
  * @return		- None
  *
  * @Note		- None
  *
  *****************************************************************/
-static void spi_rxne_interrupt_handle(SPI_Handle_t *pSPIHandle)
+static void SPI_RXNE_InterruptHandle(SPI_Handle_t *pSPIHandle)
 {
 	if( pSPIHandle->pSPIx->CR1 & (1 << SPI_CR1_DFF) )
 	{
@@ -728,19 +728,19 @@ static void spi_rxne_interrupt_handle(SPI_Handle_t *pSPIHandle)
 
 
 /*****************************************************************
- * @fn			- spi_ovr_err_interrupt_handle
+ * @fn			- SPI_OVR_ErrInterruptHandle
  *
  * @brief		- This function handles OVR_ERR in
  * 		          interrupt mode
  *
- * @param[in]		- Pointer to SPI Handle structure
+ * @param[in]   - Pointer to SPI Handle structure
  *
  * @return		- None
  *
  * @Note		- None
  *
  *****************************************************************/
-static void spi_ovr_err_interrupt_handle(SPI_Handle_t *pSPIHandle)
+static void SPI_OVR_ErrInterruptHandle(SPI_Handle_t *pSPIHandle)
 {
 	uint8_t temp;
 

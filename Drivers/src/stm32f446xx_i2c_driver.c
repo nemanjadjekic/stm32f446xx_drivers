@@ -21,10 +21,10 @@ static void I2C_MasterHandleRXNEInterrupt(I2C_Handle_t *pI2CHandle);
  * @fn			- I2C_PeriClockControl
  *
  * @brief		- This function enables or disables peripheral
- * 			  clock for the given I2C port
+ *                clock for the given I2C port
  *
- * @param[in]		- Base address of the I2C peripheral
- * @param[in]		- Macros: Enable or Disable
+ * @param[in]   - Base address of the I2C peripheral
+ * @param[in]   - Macros: Enable or Disable
  *
  * @return		- None
  *
@@ -70,11 +70,11 @@ void I2C_PeriClockControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
  * Init and De-Init
  */
 /*****************************************************************
- * @fn			- I2C_Init
+ * @fn	        - I2C_Init
  *
- * @brief		- This function initialize I2C peripherals
+ * @brief       - This function initialize I2C peripherals
  *
- * @param[in]		- Pointer to I2C Handle structure
+ * @param[in]   - Pointer to I2C Handle structure
  *
  * @return		- None
  *
@@ -146,15 +146,15 @@ void I2C_Init(I2C_Handle_t *pI2CHandle)
 
 
 /*****************************************************************
- * @fn			- I2C_DeInit
+ * @fn          - I2C_DeInit
  *
- * @brief		- This function de-initialize I2C peripherals
+ * @brief       - This function de-initialize I2C peripherals
  *
- * @param[in]		- Base address of the I2C peripheral
+ * @param[in]   - Base address of the I2C peripheral
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void I2C_DeInit(I2C_RegDef_t *pI2Cx)
@@ -178,10 +178,10 @@ void I2C_DeInit(I2C_RegDef_t *pI2Cx)
  * @fn			- I2C_GetFlagStatus
  *
  * @brief		- This function returns if bit in register is
- * 			  set or not
+ *                set or not
  *
- * @param[in]		- Base address of the I2C peripheral
- * @param[in]		- Name of flag
+ * @param[in]   - Base address of the I2C peripheral
+ * @param[in]   - Name of flag
  *
  * @return		- Flag status (True/False)
  *
@@ -203,8 +203,8 @@ uint8_t I2C_GetFlagStatus(I2C_RegDef_t *pI2Cx, uint32_t FlagName)
  *
  * @brief		- This function sets I2C peripheral control
  *
- * @param[in]		- Base address of the I2C peripheral
- * @param[in]		- Enable or Disable command
+ * @param[in]   - Base address of the I2C peripheral
+ * @param[in]   - Enable or Disable command
  *
  * @return		- None
  *
@@ -229,11 +229,11 @@ void I2C_PeripheralControl(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
  *
  * @brief		- I2C Master sends data to slaves
  *
- * @param[in]		- Pointer to I2C Handle structure
- * @param[in]		- Pointer to transmit buffer
- * @param[in]		- Length of transmit buffer
- * @param[in]		- Slave address
- * @param[in]		- State of status register
+ * @param[in]   - Pointer to I2C Handle structure
+ * @param[in]   - Pointer to transmit buffer
+ * @param[in]   - Length of transmit buffer
+ * @param[in]   - Slave address
+ * @param[in]   - State of status register
  *
  * @return		- None
  *
@@ -284,11 +284,11 @@ void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t L
  *
  * @brief		- I2C Master receive data from slaves
  *
- * @param[in]		- Pointer to I2C Handle structure
- * @param[in]		- Pointer to receive buffer
- * @param[in]		- Length of receive buffer
- * @param[in]		- Slave address
- * @param[in]		- State of status register
+ * @param[in]   - Pointer to I2C Handle structure
+ * @param[in]   - Pointer to receive buffer
+ * @param[in]   - Length of receive buffer
+ * @param[in]   - Slave address
+ * @param[in]   - State of status register
  *
  * @return		- None
  *
@@ -376,17 +376,17 @@ void I2C_MasterReceiveData(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_
  * @fn			- I2C_MasterSendDataInterruptMode
  *
  * @brief		- This function sends data over I2C
- * 			  peripheral in Interrupt mode
+ *                peripheral in Interrupt mode
  *
- * @param[in]		- Pointer to I2C Handle structure
- * @param[in]		- Pointer to transmit buffer
- * @param[in]		- Length of transmit buffer
- * @param[in]		- Slave address
- * @param[in]		- State of status register
+ * @param[in]   - Pointer to I2C Handle structure
+ * @param[in]   - Pointer to transmit buffer
+ * @param[in]   - Length of transmit buffer
+ * @param[in]   - Slave address
+ * @param[in]   - State of status register
  *
- * @return		- Tx State
+ * @return      - Tx State
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 uint8_t I2C_MasterSendDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr)
@@ -422,17 +422,17 @@ uint8_t I2C_MasterSendDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pTxBu
  * @fn			- I2C_MasterReceiveDataInterruptMode
  *
  * @brief		- This function receives data over I2C
- * 			  peripheral in Interrupt mode
+ *                peripheral in Interrupt mode
  *
- * @param[in]		- Pointer to I2C Handle structure
- * @param[in]		- Pointer to receive buffer
- * @param[in]		- Length of receive buffer
- * @param[in]		- Slave address
- * @param[in]		- State of status register
+ * @param[in]   - Pointer to I2C Handle structure
+ * @param[in]   - Pointer to receive buffer
+ * @param[in]   - Length of receive buffer
+ * @param[in]   - Slave address
+ * @param[in]   - State of status register
  *
- * @return		- Rx State
+ * @return      - Rx State
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 uint8_t I2C_MasterReceiveDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_t Length, uint8_t SlaveAddr, uint8_t Sr)
@@ -472,8 +472,8 @@ uint8_t I2C_MasterReceiveDataInterruptMode(I2C_Handle_t *pI2CHandle, uint8_t *pR
  *
  * @brief		- This function manages acknowledgment bit
  *
- * @param[in]		- Base address of the I2C peripheral
- * @param[in]		- Name of flag
+ * @param[in]   - Base address of the I2C peripheral
+ * @param[in]   - Name of flag
  *
  * @return		- Flag status (True/False)
  *
@@ -500,12 +500,12 @@ void I2C_ManageAcking(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
  *
  * @brief		- This function sends data in I2C Slave mode
  *
- * @param[in]		- Base address of the I2C peripheral
- * @param[in]		- Data
+ * @param[in]   - Base address of the I2C peripheral
+ * @param[in]   - Data
  *
- * @return		- Flag status (True/False)
+ * @return      - Flag status (True/False)
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void I2C_SlaveSendData(I2C_RegDef_t *pI2Cx, uint8_t data)
@@ -519,12 +519,12 @@ void I2C_SlaveSendData(I2C_RegDef_t *pI2Cx, uint8_t data)
  *
  * @brief		- This function receives data in I2C Slave mode
  *
- * @param[in]		- Base address of the I2C peripheral
- * @param[in]		- Data
+ * @param[in]   - Base address of the I2C peripheral
+ * @param[in]   - Data
  *
- * @return		- Flag status (True/False)
+ * @return      - Flag status (True/False)
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 uint8_t I2C_SlaveReceiveData(I2C_RegDef_t *pI2Cx)
@@ -541,12 +541,12 @@ uint8_t I2C_SlaveReceiveData(I2C_RegDef_t *pI2Cx)
  *
  * @brief		- This function configures interrupt
  *
- * @param[in]		- IRQ Interrupt number
- * @param[in]		- Macro: Enable/Disable
+ * @param[in]   - IRQ Interrupt number
+ * @param[in]   - Macro: Enable/Disable
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void I2C_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
@@ -595,8 +595,8 @@ void I2C_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
  *
  * @brief		- This function configures interrupt priority
  *
- * @param[in]		- IRQ Interrupt number
- * @param[in]		- IRQ interrupt priority
+ * @param[in]   - IRQ Interrupt number
+ * @param[in]   - IRQ interrupt priority
  *
  * @return		- None
  *
@@ -618,9 +618,9 @@ void I2C_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
  *
  * @brief		- Interrupt handling for different I2C events
  *
- * @param[in]		- Pointer to I2C Handle structure
- *
- * @return		- None
+ * @param[in]   - Pointer to I2C Handle structure
+
+ * @return      - None
  *
  * @Note		- None
  *
@@ -751,11 +751,11 @@ void I2C_EV_IRQHandling(I2C_Handle_t *pI2CHandle)
  *
  * @brief		- Interrupt handling for different I2C errors
  *
- * @param[in]		- Pointer to I2C Handle structure
+ * @param[in]   - Pointer to I2C Handle structure
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- None
+ * @Note        - None
  *
  *****************************************************************/
 void I2C_ER_IRQHandling(I2C_Handle_t *pI2CHandle)
@@ -826,13 +826,13 @@ void I2C_ER_IRQHandling(I2C_Handle_t *pI2CHandle)
  * @fn			- I2C_CloseReceiveData
  *
  * @brief		- Closing I2C communication when data is
- * 			  received
+ *                received
  *
- * @param[in]		- Pointer to I2C Handle structure
+ * @param[in]   - Pointer to I2C Handle structure
  *
- * @return		- None
+ * @return      - None
  *
- * @Note		- Disabling all interrupts
+ * @Note        - Disabling all interrupts
  *
  *****************************************************************/
 void I2C_CloseReceiveData(I2C_Handle_t *pI2CHandle)
@@ -859,10 +859,9 @@ void I2C_CloseReceiveData(I2C_Handle_t *pI2CHandle)
 /*****************************************************************
  * @fn			- I2C_CloseSendData
  *
- * @brief		- Closing I2C communication when data is
- * 			  sent
+ * @brief		- Closing I2C communication when data is sent
  *
- * @param[in]		- Pointer to I2C Handle structure
+ * @param[in]   - Pointer to I2C Handle structure
  *
  * @return		- None
  *
@@ -889,7 +888,7 @@ void I2C_CloseSendData(I2C_Handle_t *pI2CHandle)
  *
  * @brief		- Generate stop condition for I2C
  *
- * @param[in]		- Base address of the I2C peripheral
+ * @param[in]   - Base address of the I2C peripheral
  *
  * @return		- None
  *
@@ -907,7 +906,7 @@ void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
  *
  * @brief		- Generate stop condition for I2C
  *
- * @param[in]		- Base address of the I2C peripheral
+ * @param[in]   - Base address of the I2C peripheral
  *
  * @return		- None
  *
@@ -939,7 +938,7 @@ void I2C_SlaveEnableDisableCallbackEvents(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
  *
  * @brief		- Generate start condition for I2C
  *
- * @param[in]		- Base address of the I2C peripheral
+ * @param[in]   - Base address of the I2C peripheral
  *
  * @return		- None
  *
@@ -956,10 +955,10 @@ static void I2C_GenerateStartCondition(I2C_RegDef_t *pI2Cx)
  * @fn			- I2C_ExecuteAddressPhaseWrite
  *
  * @brief		- Send the address of the slave with r/nm
- * 			  bit set to r/nw(0) (total 8 bits)
+ * 			      bit set to r/nw(0) (total 8 bits)
  *
- * @param[in]		- Base address of the I2C peripheral
- * @param[in]		- Slave address
+ * @param[in]   - Base address of the I2C peripheral
+ * @param[in]   - Slave address
  *
  * @return		- None
  *
@@ -979,10 +978,10 @@ static void I2C_ExecuteAddressPhaseWrite(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr)
  * @fn			- I2C_ExecuteAddressPhaseRead
  *
  * @brief		- Send the address of the slave with r/nm
- * 			  bit set to r/nw(1) (total 8 bits)
+ *                bit set to r/nw(1) (total 8 bits)
  *
- * @param[in]		- Base address of the I2C peripheral
- * @param[in]		- Slave address
+ * @param[in]   - Base address of the I2C peripheral
+ * @param[in]   - Slave address
  *
  * @return		- None
  *
@@ -1003,7 +1002,7 @@ static void I2C_ExecuteAddressPhaseRead(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr)
  *
  * @brief		- Clear address flag
  *
- * @param[in]		- Base address of the I2C peripheral
+ * @param[in]   - Base address of the I2C peripheral
  *
  * @return		- None
  *
@@ -1055,7 +1054,7 @@ static void I2C_ClearAddrFlag(I2C_Handle_t *pI2CHandle)
  *
  * @brief		- Interrupt handling master TXE mode
  *
- * @param[in]		- Pointer to I2C Handle structure
+ * @param[in]   - Pointer to I2C Handle structure
  *
  * @return		- None
  *
@@ -1089,7 +1088,7 @@ static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
  *
  * @brief		- Interrupt handling master RXNE mode
  *
- * @param[in]		- Pointer to I2C Handle structure
+ * @param[in]   - Pointer to I2C Handle structure
  *
  * @return		- None
  *
@@ -1142,8 +1141,8 @@ static void I2C_MasterHandleRXNEInterrupt(I2C_Handle_t *pI2CHandle)
  *
  * @brief		- Application event callback function
  *
- * @param[in]		- Handle structure
- * @param[in]		- Application event
+ * @param[in]   - Handle structure
+ * @param[in]   - Application event
  *
  * @return		- None
  *
