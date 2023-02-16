@@ -18,8 +18,8 @@ typedef struct
     uint8_t  USART_Mode;
     uint32_t USART_Baud;
     uint8_t  USART_NoOfStopBits;
-    uint8_t	 USART_WordLength;
-    uint8_t	 USART_ParityControl;
+    uint8_t  USART_WordLength;
+    uint8_t  USART_ParityControl;
     uint8_t  USART_HWFlowControl;
 }USART_Config_t;
 
