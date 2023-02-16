@@ -79,7 +79,7 @@
 						<entry excluding="inc/lcd.h|src/lcd.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Bsp"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
-						<entry excluding="Tests/008_SPI_TxRx_Arduino.c|Tests/007_SPI_Tx_Arduino.c|Tests/009_SPI_TxRx_Arduino_IRQ.c|Tests/010_I2C_MasterTx.c|Tests/011_I2C_MasterRx.c|Tests/004_LedToggle_Button.c|Tests/005_Button_Interrupt.c|Tests/012_I2C_MasterRx_IRQ.c|Tests/006_SPI_SendData.c|Tests/002_LedToggle_PushPullCfg.c|Tests/013_I2C_SlaveTxRx.c|Tests/001_Printf.c|main.c|Tests/014_USART_Tx.c|Tests/017_Rtc_Lcd.c|Tests/003_LedToggle_OpenDrainCfg.c|Tests/015_USART_TxRx_IRQ.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
+						<entry excluding="Tests/016_RTC.c|Tests/008_SPI_TxRx_Arduino.c|Tests/007_SPI_Tx_Arduino.c|Tests/009_SPI_TxRx_Arduino_IRQ.c|Tests/010_I2C_MasterTx.c|Tests/011_I2C_MasterRx.c|Tests/004_LedToggle_Button.c|Tests/005_Button_Interrupt.c|Tests/012_I2C_MasterRx_IRQ.c|Tests/006_SPI_SendData.c|Tests/002_LedToggle_PushPullCfg.c|Tests/013_I2C_SlaveTxRx.c|Tests/001_Printf.c|main.c|Tests/014_USART_Tx.c|Tests/017_Rtc_Lcd.c|Tests/003_LedToggle_OpenDrainCfg.c|Tests/015_USART_TxRx_IRQ.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Startup"/>
 					</sourceEntries>
 				</configuration>
@@ -159,7 +159,7 @@
 						<entry excluding="src/lcd.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Bsp"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
-						<entry excluding="Tests/017_Rtc_Lcd.c|Tests/015_USART_TxRx_IRQ.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
+						<entry excluding="Tests/016_RTC.c|Tests/017_Rtc_Lcd.c|Tests/015_USART_TxRx_IRQ.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Startup"/>
 					</sourceEntries>
 				</configuration>
