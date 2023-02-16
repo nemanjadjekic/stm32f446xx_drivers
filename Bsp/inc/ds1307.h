@@ -21,27 +21,27 @@
 
 
 /* Register addresses */
-#define DS1307_ADDR_SECONDS		0x00
-#define DS1307_ADDR_MINUTES		0x01
-#define DS1307_ADDR_HOURS		0x02
-#define DS1307_ADDR_DAY			0x03
-#define DS1307_ADDR_DATE		0x04
-#define DS1307_ADDR_MONTH		0x05
-#define DS1307_ADDR_YEAR		0x06
+#define DS1307_ADDR_SECONDS     0x00
+#define DS1307_ADDR_MINUTES	    0x01
+#define DS1307_ADDR_HOURS       0x02
+#define DS1307_ADDR_DAY         0x03
+#define DS1307_ADDR_DATE        0x04
+#define DS1307_ADDR_MONTH       0x05
+#define DS1307_ADDR_YEAR        0x06
 
 #define TIME_FORMAT_12HRS_AM    0
 #define TIME_FORMAT_12HRS_PM    1
 #define TIME_FORMAT_24HRS       2
 
-#define DS1307_I2C_ADDRESS		0x68
+#define DS1307_I2C_ADDRESS      0x68
 
-#define MONDAY		1
-#define TUESDAY 	2
-#define WEDNESDAY	3
-#define THURSDAY	4
-#define FRIDAY		5
-#define SATURDAY 	6
-#define SUNDAY		7
+#define MONDAY      1
+#define TUESDAY     2
+#define WEDNESDAY   3
+#define THURSDAY    4
+#define FRIDAY      5
+#define SATURDAY    6
+#define SUNDAY      7
 
 
 typedef struct
@@ -63,7 +63,7 @@ typedef struct
 }RTC_Time_t;
 
 
-// Function prototypes
+/* Function prototypes */
 uint8_t DS1307_Init(void);
 
 void DS1307_SetCurrentTime(RTC_Time_t *);

@@ -34,19 +34,19 @@ I2C_Handle_t g_DS1307_I2C_Handle;
  *****************************************************************/
 uint8_t DS1307_Init(void)
 {
-    // Initialize I2C Pins
+    /* Initialize I2C Pins */
     DS1307_I2C_PinConfig();
 
-    // Initialize I2C Peripherals
+    /* Initialize I2C Peripherals */
     DS1307_I2C_Config();
 
-    // Enable I2C Peripherals
+    /* Enable I2C Peripherals */
     I2C_PeripheralControl(DS1307_I2C, ENABLE);
 
-    // Make clock halt = 0
+    /* Make clock halt = 0 */
     DS1307_Write(0x00, DS1307_ADDR_SECONDS);
 
-    // Read back clock halt bit
+    /* Read back clock halt bit */
     uint8_t clock_state = DS1307_Read(DS1307_ADDR_SECONDS);
 
     return ((clock_state >> 7 ) & 0x1);
@@ -58,7 +58,7 @@ uint8_t DS1307_Init(void)
  *
  * @brief       - This function sets current time
  *
- * @param[in]   - Addres of RTC Time structure
+ * @param[in]   - Address of RTC Time structure
  *
  * @return      - None
  *
@@ -97,7 +97,7 @@ void DS1307_SetCurrentTime(RTC_Time_t *RTC_Time)
  * @brief       - This function gets time data and stores it
  *                into RTC Time structure
  *
- * @param[in]   - Addres of RTC Time structure
+ * @param[in]   - Address of RTC Time structure
  *
  * @return      - None
  *
@@ -116,11 +116,11 @@ void DS1307_GetCurrentTime(RTC_Time_t *RTC_Time)
     uint8_t hours = DS1307_Read(DS1307_ADDR_HOURS);
 
     if(hours & (1 << 6)) {
-        // 12 hour format
+        /* 12 hour format */
         RTC_Time->time_format = !((hours & (1 << 5)) == 0);
         hours &= ~(0x03 << 5); // Clear 5th and 6th bits
     } else {
-        // 24 hour format
+        /* 24 hour format */
         RTC_Time->time_format = TIME_FORMAT_24HRS;
     }
 
@@ -133,7 +133,7 @@ void DS1307_GetCurrentTime(RTC_Time_t *RTC_Time)
  *
  * @brief       - This function sets current date
  *
- * @param[in]   - Addres of RTC Date structure
+ * @param[in]   - Address of RTC Date structure
  *
  * @return      - None
  *
@@ -155,7 +155,7 @@ void DS1307_SetCurrentDate(RTC_Date_t *RTC_Date)
  * @brief       - This function gets date data and stores it
  *                into RTC Date structure
  *
- * @param[in]   - Addres of RTC Date structure
+ * @param[in]   - Address of RTC Date structure
  *
  * @return      - None
  *
