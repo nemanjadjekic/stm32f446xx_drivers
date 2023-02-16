@@ -60,18 +60,18 @@
 #define FLASH_BASEADDR      0x08000000U     /* Base address of FLASH memory */
 #define SRAM1_BASEADDR      0x20000000U     /* Base address of SRAM1 memory */
 #define SRAM2_BASEADDR      0x2001C000U     /* Base address of SRAM2 memory */
-#define ROM_BASEADDR        0x1FFF0000U     /* Base address of ROM memory 	*/
-#define SRAM_BASEADDR       SRAM1_BASEADDR  /* Base address of SRAM memory 	*/
+#define ROM_BASEADDR        0x1FFF0000U     /* Base address of ROM memory   */
+#define SRAM_BASEADDR       SRAM1_BASEADDR  /* Base address of SRAM memory  */
 
 
 /*
  * AHBx and APBx Bus peripheral base addresses
  */
-#define PERIPH_BASEADDR         0x40000000U	    /* Base address of PERIPHERALS memory 	  */
+#define PERIPH_BASEADDR         0x40000000U     /* Base address of PERIPHERALS memory     */
 #define APB1PERIPH_BASEADDR     PERIPH_BASEADDR /* Base address of APB1 peripheral memory */
-#define APB2PERIPH_BASEADDR     0x40010000U	    /* Base address of APB2 peripheral memory */
-#define AHB1PERIPH_BASEADDR     0x40020000U	    /* Base address of AHB1 peripheral memory */
-#define AHB2PERIPH_BASEADDR     0x50000000U	    /* Base address of AHB2 peripheral memory */
+#define APB2PERIPH_BASEADDR     0x40010000U     /* Base address of APB2 peripheral memory */
+#define AHB1PERIPH_BASEADDR     0x40020000U     /* Base address of AHB1 peripheral memory */
+#define AHB2PERIPH_BASEADDR     0x50000000U     /* Base address of AHB2 peripheral memory */
 
 
 /*
@@ -87,7 +87,7 @@
 #define GPIOH_BASEADDR      (AHB1PERIPH_BASEADDR + 0x1C00) /* GPIOH base address                    */
 #define RCC_BASEADDR        (AHB1PERIPH_BASEADDR + 0x3800) /* RCC base address                      */
 #define CRC_BASEADDR        (AHB1PERIPH_BASEADDR + 0x3000) /* CRC base address                      */
-#define FIR_BASEADDR        (AHB1PERIPH_BASEADDR + 0x3C00) /* Flash interface register base address	*/
+#define FIR_BASEADDR        (AHB1PERIPH_BASEADDR + 0x3C00) /* Flash interface register base address */
 #define DMA1_BASEADDR       (AHB1PERIPH_BASEADDR + 0x6000) /* DMA1 base address                     */
 #define DMA2_BASEADDR       (AHB1PERIPH_BASEADDR + 0x6400) /* DMA2 base address                     */
 
