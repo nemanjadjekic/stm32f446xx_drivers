@@ -22,7 +22,7 @@
 
 /* Register addresses */
 #define DS1307_ADDR_SECONDS     0x00
-#define DS1307_ADDR_MINUTES	    0x01
+#define DS1307_ADDR_MINUTES     0x01
 #define DS1307_ADDR_HOURS       0x02
 #define DS1307_ADDR_DAY         0x03
 #define DS1307_ADDR_DATE        0x04
