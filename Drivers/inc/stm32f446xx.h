@@ -260,7 +260,7 @@ typedef struct
 
 
 /*
- * Peripheral definitions (Peripheral base addresses typecasted to xxx_RegDef_t)
+ * Peripheral definitions (Peripheral base addresses type casted to xxx_RegDef_t)
  */
 #define GPIOA           ((GPIO_RegDef_t*) GPIOA_BASEADDR)
 #define GPIOB           ((GPIO_RegDef_t*) GPIOB_BASEADDR)
